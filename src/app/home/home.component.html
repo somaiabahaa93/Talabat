@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="navbar">
+      <mat-toolbar class="navbar__container d-jcb">
+  
+        <div class="navbar__logo">
+          <img [routerLink]="['/']" style="cursor: pointer; border: none !important;" src="assets/img/logo2.png" alt=""
+            width="150px">
+        </div>
+        <div class="navbar__elements">
+          <ul>
+            
+            
+            <li><a><button mat-button>Offers</button></a></li>
+            <li><a><button mat-button>Become a partner</button></a></li>
+            <li><a><button mat-button [routerLink]="['/ps/restaurants']">All Restaurants</button></a></li>
+            
+
+          </ul>
+        </div>
+        <div class="d-flex-row">
+  
+          <div *ngIf="isLogin" class="profile-image">
+          </div>
+          <button *ngIf="!isLogin" [routerLink]="['/login']" mat-icon-button class="btn">
+            Login<mat-icon>person</mat-icon>
+          </button>
+          <button *ngIf="isLogin" mat-icon-button class="btn">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+          <button *ngIf="isLogin" mat-icon-button class="btn" (click)="logout()">
+            <mat-icon>exit_to_app</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+    </div>
+    <div class="bg__container">
+      <div class="bg__background">
+        <img src="assets/img/bg.png" alt="">
+        <img src="assets/img/bg2.png" alt="">
+  
+      </div>
+      <div class="text--container">
+        <div class="main--header">
+          <div class="main--text">
+            <h1>Order food online in Egypt</h1>
+          </div>
+          <div class="search--input">
+            <input type="text" value="" placeholder="Search for area, street, landmark...">
+            <button mat-flat-button>Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sec-2">
+      <div class="sec--text">
+        <h1>Your everyday, right away</h1>
+        <p>Order food and grocery delivery online from hundreds of restaurants and shops nearby.</p>
+  
+        <div class="d-flex-row d-jcc image--store">
+          <img src="assets/img/google-play.png" alt="">
+          <img src="assets/img/google-play.png" alt="">
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="card--container">
+        <div class="card">
+          <div class="card--image">
+            <img src="assets/img/vertical-restaurants.png" alt="">
+          </div>
+          <div class="card--text">
+            <h1>Restaurant</h1>
+            <p>Find deals, free delivery, and more from our restaurant partners.</p>
+            <a>Explore</a>
+          </div>
+        </div>
+        <!--  -->
+        <div class="card">
+            <div class="card--image" style="background-color: #f4aa33 !important;">
+              <img src="assets/img/vertical-grocery.png" alt="">
+            </div>
+            <div class="card--text">
+              <h1>Grocery</h1>
+              <p>Find deals, free delivery, and more from our restaurant partners.</p>
+              <a>Explore</a>
+            </div>
+          </div>
+        <div class="card">
+          <div class="card--image" style="background-color: rgb(145, 171, 255);">
+            <img src="assets/img/vertical-flowers.png" alt="">
+          </div>
+          <div class="card--text">
+            <h1>Pharmacy</h1>
+            <p>Find deals, free delivery, and more from our restaurant partners.</p>
+            <a>Explore</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <div class="join-us">
+      <div class="join--card">
+  
+  
+        <div class="join-us--text">
+          <h1>
+            Join us
+          </h1>
+          <p>Be a part of the talabat story</p>
+  
+        </div>
+        <div class="login--form">
+          <div class="login-image">
+  
+          </div>
+          <div class="login--text">
+            <h1>Become a Customer</h1>
+            <p>Login or Create a account and order food now!</p>
+            <button mat-flat-button style="background-color: #f4aa33;">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div class="google-play--container d-jcb">
+      <div class="sotre--header-text">
+        <h1>
+          Discover the new talabat app
+        </h1>
+        <p>Get what you need, when you need it.</p>
+        <div class="d-flex-row d-jcc image--store">
+          <img style="margin-left: 0px !important;" src="assets/img/google-play.png" alt="">
+          <img src="assets/img/google-play.png" alt="">
+        </div>
+      </div>
+      <div class="app--image">
+        <img src="assets/img/app-view-en.png" alt="">
+      </div>
+    </div>
+    <footer>
+     
+    </footer>
+  </div>
