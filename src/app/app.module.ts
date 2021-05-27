@@ -46,6 +46,9 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { AboutComponent } from './about/about.component';
+import { ResturantsListComponent } from './resturants-list/resturants-list.component';
+import { ResturantItemComponent } from './resturant-item/resturant-item.component';
+import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 // import { CustomerManagerComponent } from './customer-manager/customer-manager.component';
 
 // import { DeleteCustomerComponent } from './customer-manager/delete-customer/delete-customer.component';
@@ -58,6 +61,9 @@ import { AboutComponent } from './about/about.component';
     AppComponent,
     HomeComponent,
     AboutComponent,
+    ResturantsListComponent,
+    ResturantItemComponent,
+    ResturantDetailsComponent,
     // LoginComponent,
     // RegisterComponent,
     
