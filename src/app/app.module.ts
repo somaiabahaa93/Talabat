@@ -49,6 +49,8 @@ import { AboutComponent } from './about/about.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { ResturantItemComponent } from './resturant-item/resturant-item.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 // import { CustomerManagerComponent } from './customer-manager/customer-manager.component';
 
 // import { DeleteCustomerComponent } from './customer-manager/delete-customer/delete-customer.component';
@@ -64,6 +66,8 @@ import { ResturantDetailsComponent } from './resturant-details/resturant-details
     ResturantsListComponent,
     ResturantItemComponent,
     ResturantDetailsComponent,
+    LoginComponent,
+    RegisterComponent,
     // LoginComponent,
     // RegisterComponent,
     
