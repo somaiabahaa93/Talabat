@@ -11,4 +11,7 @@ export class ResturantsService {
   getResturants(params?: any) {
     return this._http.get(`${environment.baseUrl}`, { params });
   }
+  getResturantById(id: any) {
+    return this._http.get(`${environment.baseUrl}/${id}`);
+  }
 }
