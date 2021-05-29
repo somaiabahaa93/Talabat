@@ -49,9 +49,10 @@ import { AboutComponent } from './about/about.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { ResturantItemComponent } from './resturant-item/resturant-item.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+// import { LoginComponent } from './login/login.component';
+// import { RegisterComponent } from './register/register.component';
 import { AlertComponent } from './_components/alert/alert.component';
+import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './_helpers';
 // import { CustomerManagerComponent } from './customer-manager/customer-manager.component';
 
 // import { DeleteCustomerComponent } from './customer-manager/delete-customer/delete-customer.component';
@@ -67,9 +68,11 @@ import { AlertComponent } from './_components/alert/alert.component';
     ResturantsListComponent,
     ResturantItemComponent,
     ResturantDetailsComponent,
-    LoginComponent,
-    RegisterComponent,
+    // LoginComponent,
+    // RegisterComponent,
     AlertComponent,
+    AppComponent
+    
     // LoginComponent,
     // RegisterComponent,
     
@@ -136,6 +139,11 @@ import { AlertComponent } from './_components/alert/alert.component';
     //   useClass:TokenService,
     //   multi:true
     // }
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+    // provider used to create fake backend
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

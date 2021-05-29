@@ -1,11 +1,13 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Alert, AlertType } from 'src/app/_models';
+import { AlertService } from 'src/app/_services';
 
 // import { Alert, AlertType } from '@app/_models';
-import { Alert, AlertType } from '/_models';
 
-import { AlertService } from '@app/_services';
+
+// import { AlertService } from '@app/_services';
 
 @Component({ selector: 'alert', templateUrl: 'alert.component.html' })
 export class AlertComponent implements OnInit, OnDestroy {
@@ -13,8 +15,8 @@ export class AlertComponent implements OnInit, OnDestroy {
     @Input() fade = true;
 
     alerts: Alert[] = [];
-    alertSubscription: Subscription;
-    routeSubscription: Subscription;
+    alertSubscription: Subscription = new Subscription;
+    routeSubscription: Subscription = new Subscription;
 
     constructor(private router: Router, private alertService: AlertService) { }
 
@@ -28,7 +30,7 @@ export class AlertComponent implements OnInit, OnDestroy {
                     this.alerts = this.alerts.filter(x => x.keepAfterRouteChange);
 
                     // remove 'keepAfterRouteChange' flag on the rest
-                    this.alerts.forEach(x => delete x.keepAfterRouteChange);
+                    this.alerts = this.alerts.filter(x => x !== alert);
                     return;
                 }
 

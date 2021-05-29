@@ -11,13 +11,13 @@ import { User } from './_models';
 
 export class AppComponent {
   title = 'Talabat';
-  user: User = new User;
+  user!: User;
 
   constructor(private accountService: AccountService) {
       this.accountService.user.subscribe(x => this.user = x);
   }
 
-  logout() {
-    this.accountService.logout();
-}
+//   logout() {
+//     this.accountService.logout();
+// }
 }

@@ -2,14 +2,16 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { AccountService } from '../_services/account.service';
+import { AlertService } from '../_services/alert.service';
 
-import { AccountService, AlertService } from '@app/_services';
+// import { AccountService, AlertService } from '@app/_services';
 
 @Component({ templateUrl: 'add-edit.component.html' })
 export class AddEditComponent implements OnInit {
-    form: FormGroup;
-    id: string;
-    isAddMode: boolean;
+    form!: FormGroup;
+    id!: string;
+    isAddMode: boolean = false;
     loading = false;
     submitted = false;
 

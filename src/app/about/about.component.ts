@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
+import { User } from '../_models';
+import { AccountService } from '../_services';
 
-import { User } from '@app/_models';
-import { AccountService } from '@app/_services';
+// import { User } from '@app/_models';
+// import { AccountService } from '@app/_services';
 
 @Component({ templateUrl: 'about.component.html' })
 export class AboutComponent {
