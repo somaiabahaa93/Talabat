@@ -51,6 +51,7 @@ import { ResturantItemComponent } from './resturant-item/resturant-item.componen
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AlertComponent } from './_components/alert/alert.component';
 // import { CustomerManagerComponent } from './customer-manager/customer-manager.component';
 
 // import { DeleteCustomerComponent } from './customer-manager/delete-customer/delete-customer.component';
@@ -68,6 +69,7 @@ import { RegisterComponent } from './register/register.component';
     ResturantDetailsComponent,
     LoginComponent,
     RegisterComponent,
+    AlertComponent,
     // LoginComponent,
     // RegisterComponent,
     

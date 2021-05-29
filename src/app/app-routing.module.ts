@@ -21,14 +21,19 @@ const routes: Routes = [
     path: 'allresturants',
     component: ResturantsListComponent
   },
-  {
-  path: 'register',
-  component: RegisterComponent
-},
+//   {
+//   path: 'register',
+//   component: RegisterComponent
+// },
+// {
+//   path: 'login',
+//   component: LoginComponent
+// },
 {
-  path: 'login',
-  component: LoginComponent
-}
+  path: ':id', component: ResturantDetailsComponent
+},
+{ path: 'users', loadChildren: usersModule, canActivate: [AuthGuard] },
+{ path: 'account', loadChildren: accountModule },
 
  
   
