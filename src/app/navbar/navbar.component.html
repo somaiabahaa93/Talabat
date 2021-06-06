@@ -20,9 +20,9 @@
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" *ngIf="!user">login</a> -->
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" >login</a> -->
              
-             <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a>
+             <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a> -->
              <a class="nav-item nav-link nav-item-mine"class="nav-item nav-link nav-item-mine" *ngIf="!isSignedIn" routerLink="/signin">Log in</a>
-             <a class="nav-item nav-link nav-item-mine" routerLink="/signup">Register</a>
+             <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/signup">Register</a> -->
            
            <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button>
             
