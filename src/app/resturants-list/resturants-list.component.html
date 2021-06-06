@@ -1,7 +1,37 @@
+<!-- <div class="container" >
+    <div class="row ">
+    
+    <app-resturant-item *ngFor="let resturant of resturants"[routerLink]="[resturant.id]"></app-resturant-item>
+    
+    </div>
+
+  
+</div> -->
+<app-navbar></app-navbar>
 <div class="container" >
     <div class="row ">
-        <app-resturant-item  *ngFor="let resturant of resturants" [resturant]="resturant"></app-resturant-item>
+    
+    <div class=" col-md-3 m-auto"  *ngFor="let resturant of resturants"[routerLink]="[resturant.id]">
+    <!-- <div >
+     <img class="img-fluid" [src]="resturant.logo">
+     
+      <h3>{{resturant.name}}</h3>
+      
+      <p>{{resturant.description}}</p>
+    </div> -->
 
+    <div class="card my-3" >
+      <img [src]="resturant.logo" class="card-img-top" >
+      <!-- <p>{{resturant.logo}}</p> -->
+      <div class="card-body">
+        <h5 class="card-title">{{resturant.name}}</h5>
+        <!-- <p class="card-text">{{resturant.first_name_vendor}}</p> -->
+      </div>
+      
+    </div>
+    
+    </div>
+    
     </div>
 
   

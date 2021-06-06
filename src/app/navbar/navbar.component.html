@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark nav-mine" >
+    <a class="navbar-brand" href="#"><div class="ml-5 mr-5">
+              <img [routerLink]="['/']" style="cursor: pointer; border: none !important;" src="assets/img/logo2.png" alt=""
+                width="150px">
+            </div></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link nav-item-mine" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/users" routerLinkActive="active" *ngIf="isAdmin">Users</a> -->
+            <a class="nav-item nav-link nav-item-mine" routerLink="#" routerLinkActive="active">Offers</a>
+            <a class="nav-item nav-link nav-item-mine" routerLink="/vendor-register" routerLinkActive="active">Become a Partner</a>
+            <a class="nav-item nav-link nav-item-mine" [routerLink]="['/allresturants']">AllResturants</a>
+            <!-- <a class="nav-item nav-link" routerLink="/admin" *ngIf="isAdmin">Admin</a> -->
+             <!-- <a class="nav-item nav-link nav-item-mine" (click)="logout()" *ngIf="user">Logout </a> -->
+            <!--<a class="nav-item nav-link nav-item-mine" routerLink="">Hello {{userFromApi.firstName}} {{userFromApi.lastName}}</a>-->
+    
+             <!--<span *ngIf="userFromApi">hello {{userFromApi.firstName}} {{userFromApi.lastName}}</span>-->
+             <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" *ngIf="!user">login</a> -->
+             <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" >login</a> -->
+             
+             <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a>
+             <a class="nav-item nav-link nav-item-mine"class="nav-item nav-link nav-item-mine" *ngIf="!isSignedIn" routerLink="/signin">Log in</a>
+             <a class="nav-item nav-link nav-item-mine" routerLink="/signup">Register</a>
+           
+           <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button>
+            
+        </div>
+</nav>

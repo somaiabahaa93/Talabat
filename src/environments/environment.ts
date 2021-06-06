@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: `https://afternoon-falls-30227.herokuapp.com/api/v1/products`,
-  apiUrl: 'http://localhost:4000'
+  // baseUrl: `https://afternoon-falls-30227.herokuapp.com/api/v1/products`,
+  apiUrl: 'http://localhost:4000',
+  baseUrl: `http://127.0.0.1:8000/api/restaurants`
+  // apiUrl: 'http://localhost:4000'
   
 };
 

@@ -14,7 +14,7 @@ export class ResturantDetailsComponent implements OnInit {
  
   private _routeParamsSub!: Subscription;
   resturant!: Resturant;
-   allproducts: any;
+  //  allproducts: any;
 
 
   constructor( private _fb: FormBuilder,private _route: ActivatedRoute,private _resturantsService: ResturantsService,    private _router: Router

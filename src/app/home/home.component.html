@@ -1,144 +1,192 @@
-<div class="container">
-    <div class="navbar">
-      <mat-toolbar class="navbar__container d-jcb">
-  
-        <div class="navbar__logo">
-          <img [routerLink]="['/']" style="cursor: pointer; border: none !important;" src="assets/img/logo2.png" alt=""
-            width="150px">
-        </div>
-        <div class="navbar__elements">
-          <ul>
-            
-            
-            <li><a><button mat-button>Offers</button></a></li>
-            <li><a><button mat-button>Become a partner</button></a></li>
-            <li><a><button mat-button [routerLink]="['/allresturants']">All Restaurants</button></a></li>
-            
+<app-navbar></app-navbar>
+<div class="bg__container">
+  <div class="bg__background">
+    <img src="assets/img/bg.png" alt="">
+    <img src="assets/img/bg2.png" alt="">
 
-          </ul>
-        </div>
-        <div class="d-flex-row">
-  
-          <div *ngIf="isLogin" class="profile-image">
-          </div>
-          <button *ngIf="!isLogin" [routerLink]="['/login']" mat-icon-button class="btn">
-            Login<mat-icon>person</mat-icon>
-          </button>
-          <button *ngIf="isLogin" mat-icon-button class="btn">
-            <mat-icon>shopping_cart</mat-icon>
-          </button>
-          <button *ngIf="isLogin" mat-icon-button class="btn" (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
-          </button>
-        </div>
-      </mat-toolbar>
-    </div>
-    <div class="bg__container">
-      <div class="bg__background">
-        <img src="assets/img/bg.png" alt="">
-        <img src="assets/img/bg2.png" alt="">
-  
-      </div>
-      <div class="text--container">
-        <div class="main--header">
-          <div class="main--text">
-            <h1>Order food online in Egypt</h1>
-          </div>
-          <div class="search--input">
-            <input type="text" value="" placeholder="Search for area, street, landmark...">
-            <button mat-flat-button>Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="sec-2">
-      <div class="sec--text">
-        <h1>Your everyday, right away</h1>
-        <p>Order food and grocery delivery online from hundreds of restaurants and shops nearby.</p>
-  
-        <div class="d-flex-row d-jcc image--store">
-          <img src="assets/img/google-play.png" alt="">
-          <img src="assets/img/google-play.png" alt="">
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="card--container">
-        <div class="card">
-          <div class="card--image">
-            <img src="assets/img/vertical-restaurants.png" alt="">
-          </div>
-          <div class="card--text">
-            <h1>Restaurant</h1>
-            <p>Find deals, free delivery, and more from our restaurant partners.</p>
-            <a>Explore</a>
-          </div>
-        </div>
-        <!--  -->
-        <div class="card">
-            <div class="card--image" style="background-color: #f4aa33 !important;">
-              <img src="assets/img/vertical-grocery.png" alt="">
-            </div>
-            <div class="card--text">
-              <h1>Grocery</h1>
-              <p>Find deals, free delivery, and more from our restaurant partners.</p>
-              <a>Explore</a>
-            </div>
-          </div>
-        <div class="card">
-          <div class="card--image" style="background-color: rgb(145, 171, 255);">
-            <img src="assets/img/vertical-flowers.png" alt="">
-          </div>
-          <div class="card--text">
-            <h1>Pharmacy</h1>
-            <p>Find deals, free delivery, and more from our restaurant partners.</p>
-            <a>Explore</a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-    <div class="join-us">
-      <div class="join--card">
-  
-  
-        <div class="join-us--text">
-          <h1>
-            Join us
-          </h1>
-          <p>Be a part of the talabat story</p>
-  
-        </div>
-        <div class="login--form">
-          <div class="login-image">
-  
-          </div>
-          <div class="login--text">
-            <h1>Become a Customer</h1>
-            <p>Login or Create a account and order food now!</p>
-            <button mat-flat-button style="background-color: #f4aa33;">Search</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br>
-    <br>
-    <div class="google-play--container d-jcb">
-      <div class="sotre--header-text">
-        <h1>
-          Discover the new talabat app
-        </h1>
-        <p>Get what you need, when you need it.</p>
-        <div class="d-flex-row d-jcc image--store">
-          <img style="margin-left: 0px !important;" src="assets/img/google-play.png" alt="">
-          <img src="assets/img/google-play.png" alt="">
-        </div>
-      </div>
-      <div class="app--image">
-        <img src="assets/img/app-view-en.png" alt="">
-      </div>
-    </div>
-    <footer>
-     
-    </footer>
   </div>
+  <div class="text--container">
+    <div class="main--header">
+      <div class="main--text">
+        <h1>Order food online in Egypt</h1>
+      </div>
+      <div class="search--input">
+        <input type="text" value="" placeholder="Search for area, street, landmark...">
+        <button mat-flat-button>Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="text-center my-5">
+<div>
+  <h1>Your everyday, right away</h1>
+  <h6>Order food and grocery delivery online from hundreds of restaurants and shops nearby.</h6>
+</div>
+<div class="my-5">
+  <img src="assets/img/google-play.png" alt="">
+  <img src="assets/img/google-play.png" class="mx-2">
+  <img src="assets/img/google-play.png" alt="">
+</div>
+
+</div>
+
+<div class="container d-flex flex-wrap my-5 justify-content-between ">
+<div>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/img/vertical-restaurants.png" style="width: 200px;height: 200px;background-color: rgba(245, 71, 8, 0.932);">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body ">
+          <h5 class="card-title">Restaurant</h5>
+          <p class="card-text">Find deals, free delivery, and more from our restaurant partners.</p>
+          <a>Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div >
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/img/vertical-grocery.png" style="width: 200px;height: 200px;background-color: rgba(226, 124, 86, 0.932);">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Grocery</h5>
+          <p class="card-text">Find deals, free delivery, and more from our restaurant partners.</p>
+          <a>Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/img/vertical-pharmacy.png" style="width: 200px;height: 200px;background-color: rgba(49, 114, 211, 0.932);">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Pharmacy</h5>
+          <p class="card-text">Find deals, free delivery, and more from our restaurant partners.</p>
+          <a>Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>         
+
+<div class="text-center my-5">
+<h1>
+  Join us
+</h1>
+<p>Be a part of the talabat story</p>
+
+</div>
+
+
+<div class="container d-flex flex-wrap my-5 justify-content-between">
+<div>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/img/become-a-partner.png" style="width: 200px;height: 200px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body ">
+          <h5 class="card-title"> Become a partner </h5>
+          <p class="card-text">Reach more customers and achieve growth with us</p>
+          <button style="background-color: rgb(255, 90, 0);color: white;" class="btn px-3">find more out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div >
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="assets/img/career-with-us.png" style="width: 200px;height: 200px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"> Build your career </h5>
+          <p class="card-text">Join the dynamic team that makes it all happen</p>
+          <button style="background-color: rgb(255, 90, 0);color: white;" class="btn px-5">find job</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+<div class="container my-5">
+<div class="row">
+    <div class="col-6">
+      <h1>
+        Discover the new talabat app
+      </h1>
+      <p>Get what you need, when you need it. </p>
+      <div class="">
+        <img src="assets/img/google-play.png" alt="">
+        <img class="mx-3" src="assets/img/google-play.png" alt="">
+        <img src="assets/img/google-play.png" alt="">
+      </div>
+    </div>
+    <div class="col-6">
+      <img src="assets/img/app-view-en.png" class="img-fluid">
+    </div>
+</div>
+</div>
+
+
+
+<!-- <div class="p-4">
+<div class="container">
+    <h1>Hi {{user.firstName}}!</h1>
+    <p><a routerLink="/users">Manage Users</a></p>
+    
+</div>
+</div>
+
+<div class="card mt-4">
+<h4 class="card-header">Home</h4>
+<div class="card-body">
+    <p>You're logged in with Angular 10 & JWT!!</p>
+    <p>Your role is: <strong>{{user.role}}</strong>.</p>
+    <p>This page can be accessed by <u>all authenticated users</u>.</p>
+    <p class="mb-1">Current user from secure api end point:</p>
+    <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
+    <ul *ngIf="userFromApi">
+        <li>{{userFromApi.firstName}} {{userFromApi.lastName}}</li>
+    </ul>
+</div>
+</div> -->
+
+<!--
+<h1>{{ title }}</h1>
+<agm-map style=" height: 600px;" [latitude]="lat" [longitude]="lng">
+<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+-->
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+
+
+<!-- <app-map></app-map> -->
+
+
