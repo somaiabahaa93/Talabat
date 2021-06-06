@@ -33,6 +33,7 @@ export class SigninComponent implements OnInit {
   onSubmit() {
       this.authService.signin(this.loginForm.value).subscribe(
         result => {
+          
           this.responseHandler(result);
         },
         error => {
@@ -46,8 +47,9 @@ export class SigninComponent implements OnInit {
   }
 
   // Handle response
-  responseHandler(data: { access_token: string; }){
-    this.token.handleData(data.access_token);
+  responseHandler(data: { token: string; }){
+    
+    this.token.handleData(data.token);
   }
 
 }

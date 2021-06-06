@@ -13,7 +13,8 @@ export class TokenService {
 
   constructor() { }
 
-  handleData(token: string){
+  handleData(token: any){
+    debugger
     localStorage.setItem('auth_token', token);
   }
 

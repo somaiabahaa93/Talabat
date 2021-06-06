@@ -47,8 +47,8 @@ import { ResturantItemComponent } from './resturant-item/resturant-item.componen
 
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+// import { LoginComponent } from './login/login.component';
+// import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -82,8 +82,8 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     
     // MapComponent
     
-    LoginComponent,
-    RegisterComponent,
+    // LoginComponent,
+    // RegisterComponent,
     NavbarComponent,
     SigninComponent,
     SignupComponent,

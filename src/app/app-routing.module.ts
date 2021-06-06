@@ -6,8 +6,8 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 // import { AboutComponent } from './about/about.component';
 // import { AccountModule } from './account/account.module';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+// import { LoginComponent } from './login/login.component';
+// import { RegisterComponent } from './register/register.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
