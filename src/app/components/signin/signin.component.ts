@@ -47,7 +47,7 @@ export class SigninComponent implements OnInit {
   }
 
   // Handle response
-  responseHandler(data: { token: string; }){
+  responseHandler(data: { token:string; }){
     
     this.token.handleData(data.token);
   }

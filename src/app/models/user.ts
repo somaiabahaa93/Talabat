@@ -1,9 +1,9 @@
 export interface User {
-    first_name: String;
-    last_name: String;
-    email: String;
-    password: String;
-    confirm_password: String;
+    first_name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    confirm_password: string;
     gender:string;
     date_of_birth:Date;
     

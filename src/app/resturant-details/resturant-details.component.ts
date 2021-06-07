@@ -5,10 +5,12 @@ import { Subscription } from 'rxjs';
 import { Resturant } from '../models/resturant';
 import { ResturantsService } from '../services/resturants.service';
 
+
 @Component({
   selector: 'app-resturant-details',
   templateUrl: './resturant-details.component.html',
-  styleUrls: ['./resturant-details.component.scss']
+  styleUrls: ['./resturant-details.component.scss'],
+  
 })
 export class ResturantDetailsComponent implements OnInit {
  

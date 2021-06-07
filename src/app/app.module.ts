@@ -54,6 +54,9 @@ import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+// import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 // import { CustomerRegisterComponent } from './customer-register/customer-register.component';
 // import { LoginComponent } from './login/login.component';
@@ -87,7 +90,7 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     NavbarComponent,
     SigninComponent,
     SignupComponent,
-    UserProfileComponent
+    UserProfileComponent,
     // CustomerRegisterComponent,
     
     // NotFoundComponent,
@@ -130,6 +133,9 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     HttpClientModule,
     ReactiveFormsModule,
     CommonModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule,
    
     // NgxPrintModule,
    

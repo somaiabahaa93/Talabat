@@ -10,5 +10,6 @@ export interface Resturant {
     logo:string
     name:string
     description:string
+    ratings:number
     
 }

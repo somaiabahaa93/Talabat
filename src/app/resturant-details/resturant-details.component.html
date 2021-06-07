@@ -25,37 +25,89 @@
 
 
 
-<div class="container">
-<section class="main" style="background-image:url('assets/img/brandpage-bg.jpg'); height: 600px; background-size: cover;position: relative; ">
-  <div class="text-center" style="background-color: rgb(45, 45, 46,.3); width: 80%;height:80%; position:absolute; top: 10%;left: 10%;border-radius:10px;">
-    <img  class="mt-4" [src]="resturant?.logo" style="width: 150px;height: 150px;border-radius: 5px;">
-    <h2 style="color: chocolate;">{{ resturant?.name}}</h2>
-    <div class=" d-flex  justify-content-center">
-      <img src="assets/img/pointer.svg" style="width: 70px;height: 70px;">
-      <h1 style="color:white;">Select your area to see restaurant menu</h1>
+
+
+
+<div class="container " >
+  <div style="background-color: white;height:1000px;box-shadow:5px 10px 18px#888888" >
+    <div class="d-flex justify-content-center " >
+        <section class="main" style="background-image:url('assets/img/brandpage-bg.jpg'); width:98%;height: 600px; background-size: cover;position: relative; ">
+          <div class="text-center " style="background-color: rgb(45, 45, 46,.3); width: 80%;height:80%; position:absolute; top: 10%;left: 10%;border-radius:10px;">
+                <img  class="mt-4" [src]="resturant?.logo" style="width: 150px;height: 150px;border-radius: 5px;">
+                <h2 style="color: #ff5a00;">{{ resturant?.name}}</h2>
+                <div class=" d-flex  justify-content-center">
+                  <img src="assets/img/pointer.svg" style="width: 70px;height: 70px;">
+                  <h1 style="color:white;">Select your area to see restaurant menu</h1>
+                </div>
+                <div class=" d-flex align-items-center justify-content-center mt-3 " >
+                  <div style="position: relative;" class="w-50" ><input  type="text" value="" style="height: 60px; width: 100%; border-radius: 5px;" placeholder="         select from area,street,landMark ">
+                    <img src='assets/img/custom-location-pin.svg' style="width:30px;position: absolute;left: 2%;top: 20%; ">
+                    <img src='assets/img/locate-mp.svg' style=" width: 30px; position: absolute;left: 85%;top: 20%;">
+                  </div>
+                  
+
+                  <button class="btn btn-success ml-3 " style="height: 60px;">Show Menu ></button>
+                </div>
+                
+                <div class="d-flex justify-content-between m-5">
+                  
+                  <div class="d-flex" >
+                    <h6><span class="badge bg-secondary mt-2 mr-3">{{resturant.ratings}}</span></h6>
+                    <ngb-rating [(rate)]="resturant.ratings">
+                      <ng-template let-fill="fill" let-index="index">
+                        <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                      </ng-template>
+                    </ngb-rating>
+                    <!-- <span style="color:#ff5a00 ;"><ngb-rating [(rate)]="resturant.ratings"></ngb-rating> </span> -->
+                    <!-- <pre>Rate: <b>{{ resturant.ratings }}</b></pre> -->
+                  </div>
+                  <div>
+                    <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 50px ;height: 40px;">
+                    <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 50px;height: 50px;">
+                    <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 50px; height: 50px;">
+                  </div>
+                </div>
+
+                
+
+          </div>
+          <div class="px-5" style="background-color: white;height:40%;width:95%;position: relative;top:95%;left:2.5%;box-shadow:5px 10px 18px#888888 ;border-top:10px solid chocolate">
+            <div class="d-flex justify-content-between mt-3">
+              <h2 style="color: #ff5a00;">{{ resturant?.name}} delivers to you</h2>
+              <div>
+              <a href="https://www.facebook.com/TalabatEG/"> <img style="width:40px;height:30px;border-radius: 3px;" src="assets/img/face.jpg"/></a>
+              <a href="https://twitter.com/Talabat?s=09"> <img class="mx-2" style="width:40px;height:30px ;border-radius: 3px;" src="assets/img/twitter.jpg"/></a>
+              </div>
+            </div>
+            <p class="text-muted">{{ resturant?.description }}</p>
+            <!-- <h1>{{ resturant?.ratings }}</h1> -->
+        <!-- <ngb-rating [(rate)]="resturant.ratings"></ngb-rating>
+        <pre>Rate: <b>{{ resturant.ratings }}</b></pre> -->
+
+          </div>
+        </section>
+        <!-- <div style="background-color:blue; height:250;width:500px; "></div> -->
+        
     </div>
-    <div class=" d-flex align-items-center justify-content-center mt-3 " >
-      <div style="position: relative;" class="w-50" ><input  type="text" value="" style="height: 60px; width: 100%; border-radius: 5px;" placeholder="         select from area,street,landMark ">
-        <img src='assets/img/custom-location-pin.svg' style="width:30px;position: absolute;left: 2%;top: 20%; ">
-        <img src='assets/img/locate-mp.svg' style=" width: 30px; position: absolute;left: 85%;top: 20%;">
+
+
+
+    <div  style="position:absolute;top:150% ;width: 80%; " >
+       <div class="d-flex justify-content-between mx-3 " style=" overflow: auto;">
+        <h2>{{resturant?.name}} Reviews</h2>
+        <div class="">
+          
+          <ngb-rating [(rate)]="resturant.ratings">
+            <ng-template let-fill="fill" let-index="index">
+              <span class="star" [class.filled]="fill === 100">&#9733;</span>
+            </ng-template>
+          </ngb-rating>
+          <!-- <span style="color:#ff5a00 ;"><ngb-rating [(rate)]="resturant.ratings"></ngb-rating> </span> -->
+          <pre>Rate: <b>{{ resturant.ratings }}</b></pre>
+        </div>
       </div>
-      
-
-      <button class="btn btn-success ml-3 " style="height: 60px;">Show Menu ></button>
-    </div>
-    
-    <div class="d-flex justify-content-end m-5">
-      <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 50px ;height: 40px;">
-      <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 50px;height: 50px;">
-      <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 50px; height: 50px;">
-
-
     </div>
 
-
-
-    </div>
-</section>
-<!-- <div style="background-color:blue; height:250;width:500px; "></div> -->
+  </div>
 
 </div>
