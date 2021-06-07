@@ -14,7 +14,7 @@ export class TokenService {
   constructor() { }
 
   handleData(token: any){
-    debugger
+    
     localStorage.setItem('auth_token', token);
   }
 
