@@ -1,24 +1,61 @@
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="row">
+<!-- <div class="container">
+  <div class="row"> -->
      <!-- <div *ngIf="resturant; else loadingTemplate"> -->
-          <div class="col-md-6 mt-3">
+          <!-- <div class="col-md-6 mt-3">
  
               <h3> {{ resturant?.name}}</h3> 
                <p>{{ resturant?.description }}</p>
                <img class="img-fluid" [src]="resturant?.logo">
 
-           </div>
- <div class="col-md-2"> 
+           </div> -->
+ <!-- <div class="col-md-2"> 
 
  </div>
 
        <div  class="col-md-4 mt-3">
   
-       </div>
+       </div> -->
 
   
 <!-- </div> -->
-</div>
-</div>
+<!-- </div>
+</div> -->
 
+
+
+
+<div class="container">
+<section class="main" style="background-image:url('assets/img/brandpage-bg.jpg'); height: 600px; background-size: cover;position: relative; ">
+  <div class="text-center" style="background-color: rgb(45, 45, 46,.3); width: 80%;height:80%; position:absolute; top: 10%;left: 10%;border-radius:10px;">
+    <img  class="mt-4" [src]="resturant?.logo" style="width: 150px;height: 150px;border-radius: 5px;">
+    <h2 style="color: chocolate;">{{ resturant?.name}}</h2>
+    <div class=" d-flex  justify-content-center">
+      <img src="assets/img/pointer.svg" style="width: 70px;height: 70px;">
+      <h1 style="color:white;">Select your area to see restaurant menu</h1>
+    </div>
+    <div class=" d-flex align-items-center justify-content-center mt-3 " >
+      <div style="position: relative;" class="w-50" ><input  type="text" value="" style="height: 60px; width: 100%; border-radius: 5px;" placeholder="         select from area,street,landMark ">
+        <img src='assets/img/custom-location-pin.svg' style="width:30px;position: absolute;left: 2%;top: 20%; ">
+        <img src='assets/img/locate-mp.svg' style=" width: 30px; position: absolute;left: 85%;top: 20%;">
+      </div>
+      
+
+      <button class="btn btn-success ml-3 " style="height: 60px;">Show Menu ></button>
+    </div>
+    
+    <div class="d-flex justify-content-end m-5">
+      <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 50px ;height: 40px;">
+      <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 50px;height: 50px;">
+      <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 50px; height: 50px;">
+
+
+    </div>
+
+
+
+    </div>
+</section>
+<!-- <div style="background-color:blue; height:250;width:500px; "></div> -->
+
+</div>
