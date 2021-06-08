@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from '@angular/router';
-import { AuthService } from '../shared/auth.service';
+// import { AuthService } from '../shared/auth.service';
 // import { AuthService } from './../../shared/auth.service';
 
 
@@ -16,7 +16,7 @@ export class VendorRegisterComponent implements OnInit {
   constructor(
     public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService
+    // public authService: AuthService
   ) { 
     this.registerForm = this.fb.group({
       first_name: [''],
@@ -35,18 +35,18 @@ export class VendorRegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authService.register(this.registerForm.value).subscribe(
-      result => {
-        console.log(result)
-      },
-      error => {
-        this.errors = error.error;
-      },
-      () => {
-        this.registerForm.reset()
-        this.router.navigate(['signin']);
-      }
-    )
+    // this.authService.register(this.registerForm.value).subscribe(
+    //   result => {
+    //     console.log(result)
+    //   },
+    //   error => {
+    //     this.errors = error.error;
+    //   },
+    //   () => {
+    //     this.registerForm.reset()
+    //     this.router.navigate(['signin']);
+    //   }
+    // )
   }
 
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 // import { AuthService } from '../guard/auth.service';
 
@@ -7,15 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  isLogin:boolean=false;
-  constructor() { }
+  // isLogin:boolean=false;
+  constructor( private http:HttpClient) { }
 
   ngOnInit() {
     // this.isLogin= this.authService.isLoggedIn();
+  //   this.http.get('http://localhost:8000/user').subscribe({
+  //     next:(res: any)=>{
+  //         console.log(res);
+  //     },
+  //     error:err=>{console.log(err);}
+  // });
   }
   logout(){
     // this.authService.logout();
-    this.isLogin=false;
+    // this.isLogin=false;
   }
 
 }

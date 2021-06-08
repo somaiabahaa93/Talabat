@@ -1,46 +1,65 @@
-<!-- <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header>
-      <mat-card-title>Register</mat-card-title>
-    </mat-card-header>
-    <br>
-    <br>
+<app-navbar></app-navbar>
+<div class="auth-wrapper">
+  <form class="form-signin" [formGroup]="form" (submit)="submit()">
+      <h3 class="h3 mb-3 font-weight-normal text-center">Register User</h3>
 
-    <form class="example-form">
-
-      <mat-card-content>
-        <mat-form-field class="example-full-width">
-          <input type="text" [(ngModel)]="userData.first_name" name="first_name" matInput placeholder="First Name"
-            required>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input type="text" [(ngModel)]="userData.last_name" name="last_name" matInput placeholder="Last Name"
-            required>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input type="email" [(ngModel)]="userData.email" name="email" matInput placeholder="Email" required>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-          <input type="password" [(ngModel)]="userData.password" name="password" type="password" matInput
-            placeholder="Password" required>
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <input type="text" [(ngModel)]="userData.phone" name="phone" type="phone" matInput placeholder="Phone Number"
-            required>
-        </mat-form-field>
-
-
-      </mat-card-content>
-
-      <button (click)="register(userData)" type="submit" mat-stroked-button color="accent"
-        class="btn-block">Register</button>
-      <div class="d-jcc" style="margin-top: 20px;">
-        <a [routerLink]="['/login']" style="text-align: center; text-decoration: none;">Do you have account?!
-          Login</a>
+      <!-- Errors -->
+      <!-- <div *ngIf="errors?.first_name" class="alert alert-danger mt-3">
+        {{ errors?.first_name }}
       </div>
-    </form>
-  </mat-card>
-</div> -->
-<h1>register</h1>
+      <div *ngIf="errors?.last_name" class="alert alert-danger mt-3">
+        {{ errors?.last_name }}
+      </div>
+      <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+        {{ errors?.email }}
+      </div>
+      <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+          {{ errors?.password }}
+      </div>
+      <div *ngIf="errors?.confirm_password" class="alert alert-danger mt-3">
+          {{ errors?.confirm_password }}
+      </div>
+      <div *ngIf="errors?.gender" class="alert alert-danger mt-3">
+          {{ errors?.gender }}
+      </div>
+      <div *ngIf="errors?.date_of_birth" class="alert alert-danger mt-3">
+          {{ errors?.date_of_birth }}
+      </div> -->
+
+      <!-- Signup form -->
+      <div class="form-group">
+          <label>FirstName</label>
+          <input type="text" class="form-control" formControlName="first_name">
+      </div>
+      <div class="form-group">
+          <label>LASTName</label>
+          <input type="text" class="form-control" formControlName="last_name">
+      </div>
+      <div class="form-group">
+          <label>Email address</label>
+          <input type="email" class="form-control" formControlName="email">
+      </div>
+      <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" formControlName="password">
+      </div>
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" formControlName="confirm_password">
+      </div>
+      <div class="form-group">
+        <label>Gender</label><br>
+         <input type="text" class="form-control" formControlName="gender">
+
+      </div>
+      <div class="form-group">
+        <label>DOB</label>
+        <input type="date" class="form-control" formControlName="date_of_birth">
+      </div>
+      <div class="form-group">
+        <label>MobileNumber</label>
+        <input type="text" class="form-control" formControlName="mobile_number">
+      </div>
+      <button type="submit" class="btn btn-block btn-primary">Register User</button>
+  </form>
+</div>

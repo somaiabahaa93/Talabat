@@ -47,13 +47,13 @@ import { ResturantItemComponent } from './resturant-item/resturant-item.componen
 
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
-// import { LoginComponent } from './login/login.component';
-// import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SigninComponent } from './components/signin/signin.component';
-import { SignupComponent } from './components/signup/signup.component';
+// import { SigninComponent } from './components/signin/signin.component';
+// import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
-import { AuthInterceptor } from './shared/auth.interceptor';
+// import { AuthInterceptor } from './shared/auth.interceptor';
 import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -85,12 +85,12 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
     
     // MapComponent
     
-    // LoginComponent,
-    // RegisterComponent,
+    LoginComponent,
+    RegisterComponent,
     NavbarComponent,
-    SigninComponent,
-    SignupComponent,
-    UserProfileComponent,
+    // SigninComponent,
+    // SignupComponent,
+    // UserProfileComponent,
     // CustomerRegisterComponent,
     
     // NotFoundComponent,
@@ -136,6 +136,7 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
+    // ResturantDetailsModul
    
     // NgxPrintModule,
    
@@ -143,11 +144,11 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
     
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // }
     // AuthService,
     // AuthGuard,
     // RestaurantService,

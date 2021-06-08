@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './../../shared/auth.service';
+// import { AuthService } from './../../shared/auth.service';
 
 // User interface
 export class User {
@@ -17,11 +17,11 @@ export class UserProfileComponent implements OnInit {
   UserProfile!: User;
 
   constructor(
-    public authService: AuthService
+    // public authService: AuthService
   ) {
-    this.authService.profileUser().subscribe((data:any) => {
-      this.UserProfile = data;
-    })
+    // this.authService.profileUser().subscribe((data:any) => {
+    //   this.UserProfile = data;
+    // })
   }
 
   ngOnInit() { }

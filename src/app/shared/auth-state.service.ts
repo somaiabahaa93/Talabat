@@ -1,22 +1,22 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
-import { TokenService } from '../shared/token.service';
+// import { Injectable } from '@angular/core';
+// import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+// import { TokenService } from '../shared/token.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+// @Injectable({
+//   providedIn: 'root'
+// })
 
-export class AuthStateService {
+// export class AuthStateService {
 
-  private userState = new BehaviorSubject(this.token.isLoggedIn());
-  userAuthState = this.userState.asObservable();
+//   private userState = new BehaviorSubject(this.token.isLoggedIn());
+//   userAuthState = this.userState.asObservable();
 
-  constructor(
-    public token: TokenService
-  ) { }
+//   constructor(
+//     public token: TokenService
+//   ) { }
 
-  setAuthState(value: boolean) {
-    this.userState.next(value);
-  }
+//   setAuthState(value: boolean) {
+//     this.userState.next(value);
+//   }
 
-}
+// }
