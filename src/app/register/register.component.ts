@@ -2,9 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscriber } from 'rxjs';
-// import { AuthService } from '../services/auth.service';
+import { first } from 'rxjs/operators';
+import { AlertService } from '../services/alert.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -13,8 +15,16 @@ import { Subscriber } from 'rxjs';
 })
 export class RegisterComponent implements OnInit {
     form!: FormGroup;
+    loading = false;
+    submitted = false;
  
-  constructor(private formbuilder:FormBuilder,private http:HttpClient,private router:Router) { }
+  constructor(private formbuilder:FormBuilder,
+    private http:HttpClient,
+    private router:Router,
+    private route: ActivatedRoute,
+
+    private authService: AuthService,
+    private alertService: AlertService) { }
 //   invalidRegister:boolean | undefined;
 //   userData = {
 //     "first_name": "",
@@ -64,17 +74,43 @@ export class RegisterComponent implements OnInit {
 
 //     })
 //   }
+get f() { return this.form.controls; }
+
 submit():void{
     // console.log(this.form.getRawValue());
-    this.http.post('http://localhost:8000/api/registercustomer',this.form.getRawValue())
-    .subscribe({
-        next:(res: any)=>{
-            // console.log(res);
-            this.router.navigate(['']);
+    // this.http.post('http://localhost:8000/api/registercustomer',this.form.getRawValue())
+    // .subscribe({
+    //     next:(res: any)=>{
+    //         // console.log(res);
+    //         this.router.navigate(['']);
         
-        }
-    });
+    //     }
+    // });
 
+    this.submitted = true;
+
+        // reset alerts on submit
+        this.alertService.clear();
+
+        // stop here if form is invalid
+        if (this.form.invalid) {
+            return;
+        }
+
+        this.loading = true;
+        this.authService.register(this.form.value)
+            .pipe(first())
+            .subscribe({
+                next: (res:any) => {
+                       console.log(res);
+                    this.alertService.success('Registration successful', { keepAfterRouteChange: true });
+                    this.router.navigate(['../login'], { relativeTo: this.route });
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            });
 }
 
 }

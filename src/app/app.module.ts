@@ -52,9 +52,12 @@ import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 // import { SigninComponent } from './components/signin/signin.component';
 // import { SignupComponent } from './components/signup/signup.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+// import { UserProfileComponent } from './components/user-profile/user-profile.component';
 // import { AuthInterceptor } from './shared/auth.interceptor';
 import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ResturantDetailsModule } from './resturant-details/resturant-details.module';
+import { JwtInterceptor } from './_helpers/jwt.interceptor';
+import { ErrorInterceptor } from './_helpers/error.interceptor';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -136,7 +139,7 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
     NgbModule,
     NgbPaginationModule,
     NgbAlertModule,
-    // ResturantDetailsModul
+    ResturantDetailsModule,
    
     // NgxPrintModule,
    
@@ -144,6 +147,8 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
     
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

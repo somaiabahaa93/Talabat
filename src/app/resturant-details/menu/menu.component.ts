@@ -17,6 +17,8 @@ import { ResturantsService } from 'src/app/services/resturants.service';
 export class MenuComponent implements OnInit {
   private _routeParamsSub!: Subscription;
   resturant!: Resturant;
+  
+  
   constructor(private _fb: FormBuilder,private _route: ActivatedRoute,private _resturantsService: ResturantsService,    private _router: Router) { }
 
   ngOnInit(): void {

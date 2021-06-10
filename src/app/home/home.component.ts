@@ -13,16 +13,16 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     // this.isLogin= this.authService.isLoggedIn();
-  //   this.http.get('http://localhost:8000/user').subscribe({
+  //   this.http.get('http://localhost:8000/api/user').subscribe({
   //     next:(res: any)=>{
   //         console.log(res);
   //     },
   //     error:err=>{console.log(err);}
   // });
   }
-  logout(){
-    // this.authService.logout();
+  // logout(){
+    //  this.authService.logout();
     // this.isLogin=false;
-  }
+  // }
 
 }

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Emitters } from '../emitters/emitters';
+import { User } from '../models/user';
+import { AuthService } from '../services/auth.service';
 // import { AuthStateService } from '../shared/auth-state.service';
 // import { TokenService } from '../shared/token.service';
 // import { TokenService } from './shared/token.service';
@@ -12,36 +14,53 @@ import { Emitters } from '../emitters/emitters';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent  {
   // isSignedIn: boolean = false;
-  authenticated=false;
-  constructor(
-    // private auth: AuthStateService,
-    public router: Router,
-    private http:HttpClient
-    // public token: TokenService,
-  ) { }
+  // authenticated=false;
+  // token!: string;
 
-  ngOnInit() {
+  // constructor(
+  //   // private auth: AuthStateService,
+  //   public router: Router,
+  //   private http:HttpClient
+  //   // public token: TokenService,
+  // ) { }
+
+  
     // this.auth.userAuthState.subscribe(val => {
     //     this.isSignedIn = val;
     // });
-    Emitters.authEmitter.subscribe({generatorOrNext:(auth:boolean)=>{this.authenticated=auth;}});
-  }
+    // Emitters.authEmitter.subscribe({generatorOrNext:(auth:boolean)=>{this.authenticated=auth;}});
+  
 
-  logout():void {
-    this.http.post("http://localhost:8000/api/logout",{}).subscribe({
-      next:(res: any)=>{
-        this.authenticated=false;
-          console.log(res);
-          // this.router.navigate(['']);
+  // logout():void {
+  //   localStorage.getItem('token');
+  //   this.http.post("http://localhost:8000/api/logout",this.token).subscribe({
+  //     next:(res: any)=>{
+  //       // this.authenticated=false;
+  //       // this.token = res['token'];
+        
+  //         console.log(res);
+  //         // this.router.navigate(['']);
       
-      }
-  });;
+  //     }
+  // });;
 
-    // this.auth.setAuthState(false);
-    // this.token.removeToken();
-    // this.router.navigate(['login']);
-  }
+  //   // this.auth.setAuthState(false);
+  //   // this.token.removeToken();
+  //   // this.router.navigate(['login']);
+  // }
+
+
+
+  user!: User;
+
+    constructor(private authService: AuthService) {
+        this.authService.user.subscribe(x => this.user = x);
+    }
+
+    logout() {
+        this.authService.logout();
+    }
 
 }

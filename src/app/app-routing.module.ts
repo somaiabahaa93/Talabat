@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 // import { SigninComponent } from './components/signin/signin.component';
 // import { SignupComponent } from './components/signup/signup.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+// import { UserProfileComponent } from './components/user-profile/user-profile.component';
 // import { AboutComponent } from './about/about.component';
 // import { AccountModule } from './account/account.module';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +11,7 @@ import { RegisterComponent } from './register/register.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
+import { AuthGuard } from './_helpers/auth.guard';
 // import { UsersModule } from './users/users.module';
 
 // import { AuthGuard } from './_helpers';
@@ -38,7 +39,7 @@ const routes: Routes = [
 },
 {
   path: 'vendor-register',
-  component: VendorRegisterComponent
+  component: VendorRegisterComponent,canActivate: [AuthGuard]
 },
 {
   path: 'login',
