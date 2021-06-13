@@ -22,8 +22,8 @@
              
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a> -->
              <!-- <a class="nav-item nav-link nav-item-mine"class="nav-item nav-link nav-item-mine" *ngIf="!isSignedIn" routerLink="/signin">Log in</a> -->
-             <a class="nav-item nav-link nav-item-mine" *ngIf="!user" routerLink="/register">Register</a>
-           <h1>{{user?.first_name}}</h1>
+             <!-- <a class="nav-item nav-link nav-item-mine" *ngIf="!user" routerLink="/register">Register</a> -->
+           <!-- <h1>{{user?.first_name}}</h1> -->
            <!-- <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button> -->
            <a class="nav-item nav-link nav-item-mine" *ngIf="user"  routerLink="/login" (click)="logout()" >logout</a>
 

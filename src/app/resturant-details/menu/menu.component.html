@@ -25,7 +25,7 @@
     <div class="part d-flex pl-3 m-4">
         <img style="width: 100px;height: 100px; border-radius: 3px;" [src]="resturant?.logo">
         <div>
-        <h4 class=" pl-3 pt-2">  {{resturant.name}}</h4>
+        <h4 class=" pl-3 pt-2">  {{resturant?.name}}</h4>
         <h6 class="ml-2 text-muted"> Min. order: EGP 0.00</h6>
         </div>
     </div>
@@ -81,62 +81,50 @@
       
         <div class="p-3 text-muted" style="width:15%;position: fixed;left: 10%;top: 45%;border:1px solid #dbd8d8;">
             <h6 style="color: black;" >Categories</h6>
+            <p *ngFor="let cat of categories"> {{cat?.name}} </p>
+
+            <!-- <a *ngFor="let cat of categories" href="{{cat?.href.menuitems}}">asgh<br></a> -->
+            <!-- <p>Most Selling</p>
             <p>Most Selling</p>
             <p>Most Selling</p>
             <p>Most Selling</p>
-            <p>Most Selling</p>
-            <p>Most Selling</p>
-            <p>Most Selling</p>
+            <p>Most Selling</p> -->
            
         </div>
         <div class="row mr-5">
             <div class="col-md-6 m-auto ">
                 <input class="mt-5 form-control w-100 mb-3 mr-5" type="tex" placeholder="Search Menu Item">
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
+                <div  class="accordion" id="accordionExample">
+                    <div  *ngFor="let cat of categories" class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Collapsible Group Item #1
+                        <button  class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a href="{{cat?.href.menuitems}}"  >{{cat?.name}}</a>
                         </button>
                         </h2>
                     </div>
                 
-                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                         <div class="card-body">
-                        Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                            <!-- <a href="{{cat?.href.menuitems}}">{{cat?.href.menuitems}}<br></a> -->
+                            <!-- <ul>
+                                <li *ngFor="let item of menuitems">{{item?.href.menuitems}}</li>
+                                
+                            </ul> -->
+                            <app-menuitems></app-menuitems>
+                            <!-- <p>{{cat?.href.menuitems.name}}</p> -->
                         </div>
                     </div>
                     </div>
-                    <div class="card">
-                    <div class="card-header" id="headingTwo">
-                        <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Collapsible Group Item #2
-                        </button>
-                        </h2>
-                    </div>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                        <div class="card-body">
-                        Some placeholder content for the second accordion panel. This panel is hidden by default.
-                        </div>
-                    </div>
-                    </div>
-                    <div class="card">
-                    <div class="card-header" id="headingThree">
-                        <h2 class="mb-0">
-                        <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                        </button>
-                        </h2>
-                    </div>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                        <div class="card-body">
-                        And lastly, the placeholder content for the third and final accordion panel. This panel is hidden by default.
-                        </div>
-                    </div>
-                    </div>
-                </div>
+                    
+                </div> 
+            
+               
+            
+            
+            
+            
+            
             </div>
         </div>
         

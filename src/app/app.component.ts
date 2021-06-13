@@ -29,6 +29,7 @@ export class AppComponent {
     // public token: TokenService,
   ) {
       // this.accountService.user.subscribe(x => this.user = x);
+      
   }
   // ngOnInit() {
   //   this.auth.userAuthState.subscribe(val => {
@@ -45,4 +46,12 @@ export class AppComponent {
 //   logout() {
 //     this.accountService.logout();
 // }
+
+
+
+
+
+
+
+
 }
