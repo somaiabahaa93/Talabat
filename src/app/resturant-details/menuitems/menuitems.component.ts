@@ -23,23 +23,23 @@ export class MenuitemsComponent implements OnInit {
       private resturantService: ResturantsService) { }
   ngOnInit(): void {
      
-    this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
-      if (paramMap.has('id')) {
-        this._resturantsService.getAllCategory(paramMap.get('id')).subscribe((res: any) => {
-          this.categories = res.data;
-          for(let i=0;i<this.categories.length;i++){
+    // this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+    //   if (paramMap.has('id')) {
+    //     this._resturantsService.getAllCategory(paramMap.get('id')).subscribe((res: any) => {
+    //       this.categories = res.data;
+    //       for(let i=0;i<this.categories.length;i++){
 
-            this.arr.push(this.categories[i].id)
-            // console.log(this.categories[i].href);
-            }
+    //         this.arr.push(this.categories[i].id)
+    //         // console.log(this.categories[i].href);
+    //         }
         
-          // console.log(this.arr);
+    //       // console.log(this.arr);
           
            
 
-        });
-      }
-    });  
+    //     });
+    //   }
+    // });  
     
 
     // for(let i=0;i<this.arr.length;i++){
@@ -66,24 +66,53 @@ export class MenuitemsComponent implements OnInit {
     // }
 
 
+    // for(let i=1;i<this.categories.length;i++){
 
+      this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+          //  if (paramMap.has('id') ) {
+            // for(let i=0;i<this.categories.length;i++){
+            this._resturantsService.getMenuItems(paramMap.get('id')).subscribe((res: any) => {
+              this.menuitems = res.data;
+              console.log(this.menuitems);
+              // for(let i=0;i<this.menuitems.length;i++){
     
     
-    this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
-      // if (paramMap.has('id') && paramMap.has('id')) {
-        this._resturantsService.getMenuItems(paramMap.get('id'),paramMap.get('id')).subscribe((res: any) => {
-          this.menuitems = res.data;
-          // console.log(this.menuitems);
-          for(let i=0;i<this.menuitems.length;i++){
-
-
-            // console.log(this.menuitems[i].menu_category_id)
-           }
+              //   // console.log(this.menuitems[i].menu_category_id)
+              //  }
+        
     
-
-        });
-      // }
+            });
+          //  }
+      // } //for
     });
+    
+  // } //for
+
+
+
+
+
+
+
+
+
+    ///////الكود الى بيرجع داتا 
+    
+    // this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+    //   // if (paramMap.has('id') && paramMap.has('id')) {
+    //     this._resturantsService.getMenuItems(paramMap.get('id'),paramMap.get('id')).subscribe((res: any) => {
+    //       this.menuitems = res.data;
+    //       // console.log(this.menuitems);
+    //       // for(let i=0;i<this.menuitems.length;i++){
+
+
+    //       //   // console.log(this.menuitems[i].menu_category_id)
+    //       //  }
+    
+
+    //     });
+    //   // }
+    // });
 
 
 
