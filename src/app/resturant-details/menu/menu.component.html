@@ -98,8 +98,9 @@
                     <div  *ngFor="let cat of categories" class="card">
                     <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
-                        <button  class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <a href="{{cat?.href.menuitems}}"  >{{cat?.name}}</a>
+                        <button (click)="getItems(cat)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <!-- <a (click)="getItems(cat?.href.menuitems)">{{cat?.name}}</a> -->
+                            <a >{{cat?.name}}</a> 
                         </button>
                         </h2>
                     </div>
@@ -111,8 +112,14 @@
                                 <li *ngFor="let item of menuitems">{{item?.href.menuitems}}</li>
                                 
                             </ul> -->
-                            <app-menuitems></app-menuitems>
+                            <!-- <app-menuitems></app-menuitems> -->
+                            <p *ngFor="let item of cat?.menuitems">{{item.name}}</p>
                             <!-- <p>{{cat?.href.menuitems.name}}</p> -->
+
+                              <!-- <ul>
+                                <li *ngFor="let d of resdata">{{d}}</li>
+                              </ul> -->
+                            
                         </div>
                     </div>
                     </div>
