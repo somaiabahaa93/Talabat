@@ -11,5 +11,8 @@ export interface Resturant {
     name:string
     description:string
     ratings:number
+    minimum_order:number
+    delivery_fees:number
+    working_hours:number
     
 }

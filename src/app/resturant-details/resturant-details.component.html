@@ -52,7 +52,7 @@
                 <div class="d-flex justify-content-between m-5">
                   
                   <div class="d-flex" >
-                    <h6><span class="badge bg-secondary mt-2 mr-3">{{resturant.ratings}}</span></h6>
+                    <h6><span class="badge bg-secondary mt-2 mr-3">{{resturant?.ratings}}</span></h6>
                     <ngb-rating [(rate)]="resturant.ratings">
                       <ng-template let-fill="fill" let-index="index">
                         <span class="star" [class.filled]="fill === 100">&#9733;</span>

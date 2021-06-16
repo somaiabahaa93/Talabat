@@ -13,138 +13,308 @@
 
 <img class="img-fluid" [src]="resturant?.logo"> -->
 <div class="container">
-    <div style="background-color: white;height:1000px;box-shadow:5px 10px 18px#888888" >
-    <nav aria-label="breadcrumb" class="pl-5 pt-3">
-    <ol class="breadcrumb bg-light" style="background-color: white !important;">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item"><a href="#">Library</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Data</li>
-    </ol>
-    </nav>
-<div class="d-flex justify-content-between">
-    <div class="part d-flex pl-3 m-4">
-        <img style="width: 100px;height: 100px; border-radius: 3px;" [src]="resturant?.logo">
-        <div>
-        <h4 class=" pl-3 pt-2">  {{resturant?.name}}</h4>
-        <h6 class="ml-2 text-muted"> Min. order: EGP 0.00</h6>
-        </div>
-    </div>
-    <div class="pr-3">
-        <h6  class="pl-3" style="color: green;">OPEN</h6>
-        <!-- <i class="bi bi-emoji-smile"></i> -->
-       <h6 class="pl-3"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+    <div style=" height:5000px;background-color: white;box-shadow:5px 10px 18px#888888" >
+      <nav aria-label="breadcrumb" class="pl-5 pt-3">
+      <ol class="breadcrumb bg-light" style="background-color: white !important;">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/allresturants">All Resturant</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{resturant?.name}}</li>
+      </ol>
+      </nav>
+      <div class="d-flex justify-content-between">
+      <div class="part d-flex pl-3 m-4">
+          <img style="width: 100px;height: 100px; border-radius: 3px;" [src]="resturant?.logo">
+          <div>
+          <h4 class=" pl-3 pt-2">  {{resturant?.name}}</h4>
+          <h6 class="ml-2 text-muted"> Min. order: EGP {{resturant.minimum_order}}.00</h6>
+          </div>
+      </div>
+      <div class="pr-3">
+          <h6  class="pl-3" style="color: green;">OPEN</h6>
+          <!-- <i class="bi bi-emoji-smile"></i> -->
+          <p class="text-muted">
+            <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
             <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
-          </svg>  Good</h6>
-        <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 40px ;height: 30px;">
-        <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 40px;height: 50px;">
-        <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 40px; height: 50px;">
+            </svg>
+            <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+            </svg>
+            <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+            </svg>
+            
+            {{ratingComment}}<p>
+          <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 40px ;height: 30px;">
+          <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 40px;height: 50px;">
+          <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 40px; height: 50px;">
+        </div>
       </div>
-    </div>
 
 
 
 
 
-<!-- <section class="row">
-    <div class="col-md-3" >
+        <!-- <section class="row">
+            <div class="col-md-3" >
 
-    </div>
-<div class="col-md-3">
-
-</div>
-</section> -->
-
-<div style="width:20%;height:40%;position: fixed;left: 70%;top: 50%;">
-    <h5 class="card-title px-3 pt-3 ml-0 pb-3 mb-0" style="background-color: orangered; color: white;">Your Cart</h5>
-    <div class="text-center" style="background-color:  rgb(246, 246, 246);" >
-        <img src="assets/img/empty-cart.svg" class="m-3" style="width: 100px;height: 100px;">
-        <h6 class="pb-4">There are no items in your cart</h6>
-    </div>
-   
-</div>
-
-
-<ul class="nav nav-tabs px-5 " id="myTab" role="tablist">
-    <li class="nav-item px-5" role="presentation">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Menu</a>
-    </li>
-    <li class="nav-item px-5" role="presentation">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reviews</a>
-    </li>
-    <li class="nav-item px-5" role="presentation">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Info</a>
-    </li>
-  </ul>
-  <div class="tab-content" id="myTabContent">
-    <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
-      
-        <div class="p-3 text-muted" style="width:15%;position: fixed;left: 10%;top: 45%;border:1px solid #dbd8d8;">
-            <h6 style="color: black;" >Categories</h6>
-            <p *ngFor="let cat of categories"> {{cat?.name}} </p>
-
-            <!-- <a *ngFor="let cat of categories" href="{{cat?.href.menuitems}}">asgh<br></a> -->
-            <!-- <p>Most Selling</p>
-            <p>Most Selling</p>
-            <p>Most Selling</p>
-            <p>Most Selling</p>
-            <p>Most Selling</p> -->
-           
-        </div>
-        <div class="row mr-5">
-            <div class="col-md-6 m-auto ">
-                <input class="mt-5 form-control w-100 mb-3 mr-5" type="tex" placeholder="Search Menu Item">
-                <div  class="accordion" id="accordionExample">
-                    <div  *ngFor="let cat of categories" class="card">
-                    <div class="card-header" id="headingOne">
-                        <h2 class="mb-0">
-                        <button (click)="getItems(cat)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <!-- <a (click)="getItems(cat?.href.menuitems)">{{cat?.name}}</a> -->
-                            <a >{{cat?.name}}</a> 
-                        </button>
-                        </h2>
-                    </div>
-                
-                    <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                        <div class="card-body">
-                            <!-- <a href="{{cat?.href.menuitems}}">{{cat?.href.menuitems}}<br></a> -->
-                            <!-- <ul>
-                                <li *ngFor="let item of menuitems">{{item?.href.menuitems}}</li>
-                                
-                            </ul> -->
-                            <!-- <app-menuitems></app-menuitems> -->
-                            <p *ngFor="let item of cat?.menuitems">{{item.name}}</p>
-                            <!-- <p>{{cat?.href.menuitems.name}}</p> -->
-
-                              <!-- <ul>
-                                <li *ngFor="let d of resdata">{{d}}</li>
-                              </ul> -->
-                            
-                        </div>
-                    </div>
-                    </div>
-                    
-                </div> 
-            
-               
-            
-            
-            
-            
-            
             </div>
+        <div class="col-md-3">
+
         </div>
-        
+        </section> -->
+
+    <div style="width:20%;height:40%;position: fixed;left: 70%;top: 50%;">
+        <h5 class="card-title px-3 pt-3 ml-0 pb-3 mb-0" style="background-color: orangered; color: white;">Your Cart</h5>
+        <div class="text-center" style="background-color:  rgb(246, 246, 246);" >
+            <img src="assets/img/empty-cart.svg" class="m-3" style="width: 100px;height: 100px;">
+            <h6 class="pb-4">There are no items in your cart</h6>
+        </div>
+      
+    </div>
 
 
-       
+    <ul class="nav nav-tabs px-5 " id="myTab" role="tablist">
+        <li class="nav-item px-5 text-center" role="presentation">
+          <a style="color: black !important;" class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><img class="mr-3" style="width: 20%;height: 20%;" src="assets/img/menu.jpg">Menu</a>
+        </li>
+        <li class="nav-item px-5 text-center" role="presentation">
+          <a style="color: black !important;" class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><img class="mr-3" style="width: 20%;height: 20%;" src="assets/img/review.jpg">Reviews</a>
+        </li>
+        <li class="nav-item px-5 text-center" role="presentation">
+          <a style="color: black !important;" class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"><img class="mr-3" style="width: 20%;height: 20%;" src="assets/img/info.jpg">Info</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active " id="home" role="tabpanel" aria-labelledby="home-tab">
+          
+            <div class="p-3 text-muted" style="width:15%;position: fixed;left: 10%;top: 45%;border:1px solid #dbd8d8;">
+                <h6 style="color: black;" >Categories</h6>
+                <p *ngFor="let cat of categories"> {{cat?.name}} </p>
 
+                <!-- <a *ngFor="let cat of categories" href="{{cat?.href.menuitems}}">asgh<br></a> -->
+                <!-- <p>Most Selling</p>
+                <p>Most Selling</p>
+                <p>Most Selling</p>
+                <p>Most Selling</p>
+                <p>Most Selling</p> -->
+              
+            </div>
+            <div class="row mr-5">
+                <div class="col-md-6 m-auto ">
+                    <input class="mt-5 form-control w-100 mb-3 mr-5" type="tex" placeholder="Search Menu Item">
+                    <div  class="accordion" id="accordionExample">
+                        <div  *ngFor="let cat of categories" class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                            <button style="text-decoration: none !important;" (click)="getItems(cat)" class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <!-- <a (click)="getItems(cat?.href.menuitems)">{{cat?.name}}</a> -->
+                                <a style="color: black;font-weight: bold;" >{{cat?.name}}</a> 
+                            </button>
+                            </h2>
+                        </div>
+                    
+                        <div  id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <!-- <a href="{{cat?.href.menuitems}}">{{cat?.href.menuitems}}<br></a> -->
+                                <!-- <ul>
+                                    <li *ngFor="let item of menuitems">{{item?.href.menuitems}}</li>
+                                    
+                                </ul> -->
+                                <!-- <app-menuitems></app-menuitems> -->
+                                
+                                <div style="border-bottom: 1px solid rgb(190, 187, 187);" class="py-3 d-flex justify-content-between" *ngFor="let item of cat?.menuitems">
+                                  <img style="width: 15%;height:15%" src="{{item.logo}}">
+                                  <div class="text-center">
+                                    <p>{{item.name}}</p>
+                                    <p class="text-muted">{{item.description}}</p>
+                                  </div>
+                                  <h6>EGP{{item.price}}.00</h6>
+                                  
+                                </div>
+                              
+                              </div>
+                                <!-- <p>{{cat?.href.menuitems.name}}</p> -->
+
+                                  <!-- <ul>
+                                    <li *ngFor="let d of resdata">{{d}}</li>
+                                  </ul> -->
+                                
+                            </div>
+                        </div>
+                        </div>
+                        
+                    </div> 
+                
+                  
+                
+                
+                
+                
+                
+                </div>
+        </div>
+
+
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <div>
+            
+              <div class="d-flex justify-content-start mt-4 w-75">
+                <div class="col-md-3 text-center" style= "border-right: 1px solid #cfcbcb;height: 10%;">
+                            <p class="text-muted">
+                              <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                              <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                              </svg>
+                              <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                              <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+                              </svg>
+                              <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+                              </svg>
+
+
+                      
+                              
+                              {{ratingComment}}<p>
+                            <p>Order Packaging</p>
+                </div>
+                <div class="col-md-3 text-center" style="border-right: 1px solid #cfcbcb;height: 10%;">
+                  <p class="text-muted">
+
+                    <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+                      </svg>
+
+
+                    {{ratingComment}}<p>
+                    <p>Value for money</p>
+                </div>
+                <div class="col-md-3 text-center" style="border-right: 1px solid #cfcbcb;height: 10%;">
+                  <p class="text-muted">
+
+                    <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+                      </svg>
+                    {{ratingComment}}<p>
+                    <p>Delivery time</p>
+                </div>
+                <div class="col-md-3 text-center" style="height: 70px;">
+                  <p class="text-muted"> 
+
+                    <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+                      </svg>
+                      <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+                      </svg>
+                    {{ratingComment}}<p>
+                    <p>Quality of food</p>
+                </div>
+
+              </div>
+            
+          </div>
+        </div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+          
+          <h5 class="m-4">{{resturant?.name}}</h5>
+
+          <table class="table table-sm w-75 my-3 ">
+            
+            <tbody>
+              <tr>
+                <td class="pl-5">Minimum Order Amount</td>
+                
+                <td >EGP {{resturant.minimum_order}}.00</td>
+              </tr>
+              <tr>
+                
+                <td class="pl-5">Working Hours</td>
+                
+                <td>{{resturant.working_hours}}h</td>
+              </tr>
+              <tr>
+                
+                <td class="pl-5">Service Charge</td>
+              
+                <td>EGP {{resturant.delivery_fees}}.00</td>
+              </tr>
+              <tr>
+                
+                <td class="pl-5">Pyment</td>
+              
+                <td>
+                  <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 40px ;height: 30px;">
+                  <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 40px;height: 50px;">
+                  <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 40px; height: 50px;">
+                </td>
+              </tr>
+              <tr>
+                
+                <td class="pl-5">Rating</td>
+              
+                <td><p class="text-muted">
+                  <svg *ngIf="ratingComment=='Very Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.498 3.498 0 0 0 8 11.5a3.498 3.498 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.498 4.498 0 0 1 8 12.5a4.498 4.498 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683zM7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z"/>
+                  </svg>
+                  <svg *ngIf="ratingComment=='Excellent'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-laughing" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M12.331 9.5a1 1 0 0 1 0 1A4.998 4.998 0 0 1 8 13a4.998 4.998 0 0 1-4.33-2.5A1 1 0 0 1 4.535 9h6.93a1 1 0 0 1 .866.5zM7 6.5c0 .828-.448 0-1 0s-1 .828-1 0S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 0-1 0s-1 .828-1 0S9.448 5 10 5s1 .672 1 1.5z"/>
+                  </svg>
+                  <svg *ngIf="ratingComment=='Good'" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-emoji-neutral" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M4 10.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5zm3-4C7 5.672 6.552 5 6 5s-1 .672-1 1.5S5.448 8 6 8s1-.672 1-1.5zm4 0c0-.828-.448-1.5-1-1.5s-1 .672-1 1.5S9.448 8 10 8s1-.672 1-1.5z"/>
+                  </svg>
+
+
+          
+                  
+                  {{ratingComment}}<p></td>
+              </tr>
+              <tr>
+                
+
+            </tbody>
+          </table>
+
+
+
+
+
+        </div>
 
     </div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
   </div>
   
 
-    </div>
 </div>

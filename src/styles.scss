@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 // @import "~bootstrap/dist/css/bootstrap.min.css";
-//  @import "@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 
 // html, body { height: 100%; }
@@ -8,7 +8,12 @@
 
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/bootstrap';
+// @import "~font-awesome/css/font-awesome.min.css";
+body{
+    font-family:light segoe ui;
+    font-size: 18px;
+}

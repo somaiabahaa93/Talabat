@@ -41,6 +41,9 @@ export class ResturantsService {
     return this._http.get(`${environment.baseUrl}/${id}/menucategories`);
   }
 
+  getRating(id: any) {
+    return this._http.get(`${environment.baseUrl}/${id}/ratings`);
+  }
 
   
   // getMenuItems(id: any,id1:any){
