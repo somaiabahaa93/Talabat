@@ -58,6 +58,7 @@ import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng
 import { ResturantDetailsModule } from './resturant-details/resturant-details.module';
 import { JwtInterceptor } from './_helpers/jwt.interceptor';
 import { ErrorInterceptor } from './_helpers/error.interceptor';
+import { LetsGoComponent } from './lets-go/lets-go.component';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -91,6 +92,7 @@ import { ErrorInterceptor } from './_helpers/error.interceptor';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
+    LetsGoComponent,
     // SigninComponent,
     // SignupComponent,
     // UserProfileComponent,

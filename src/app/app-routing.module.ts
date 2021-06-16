@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { AboutComponent } from './about/about.component';
 // import { AccountModule } from './account/account.module';
 import { HomeComponent } from './home/home.component';
+import { LetsGoComponent } from './lets-go/lets-go.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
 {
   path: 'login',
   component: LoginComponent
+},
+{
+  path: "letsGo",
+  component: LetsGoComponent
 },
 // { path: 'users', loadChildren:  () => UsersModule, canActivate: [AuthGuard] },
 // { path: 'account', loadChildren: ()=>AccountModule },
