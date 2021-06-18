@@ -3,10 +3,14 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserStack } from 'protractor/built/driverProviders';
 import { Subscription } from 'rxjs';
+import { Cart } from 'src/app/models/cart';
+import { CartItem } from 'src/app/models/cart-item';
+// import { CartItem } from 'src/app/models/cart-item';
 import { Category } from 'src/app/models/category';
 import { MenuItem } from 'src/app/models/menu-item';
 import { Rating } from 'src/app/models/rating';
 import { Resturant } from 'src/app/models/resturant';
+import { AuthService } from 'src/app/services/auth.service';
 import { ResturantsService } from 'src/app/services/resturants.service';
 // import { Resturant } from '../models/resturant';
 // import { ResturantsService } from '../services/resturants.service';
@@ -35,6 +39,13 @@ export class MenuComponent implements OnInit {
   catend!:any;
   ratingComment!:string;
   imoge!:string;
+   user = this.authService.userValue;
+   cart!:Cart;
+   cartItem!:CartItem;
+  // cartItem!:{};
+  items:any;
+   
+
   
   // public resdata:[]=[];
   // public i:number=0;
@@ -44,6 +55,9 @@ export class MenuComponent implements OnInit {
     private _resturantsService: ResturantsService,  
       private _router: Router,
       private resturantService: ResturantsService,
+      private authService: AuthService,
+
+
       ) {
           
 
@@ -96,6 +110,7 @@ export class MenuComponent implements OnInit {
         this._resturantsService.getAllCategory(paramMap.get('id')).subscribe(async(res: any) => {
         
           let cats = res.data;
+          console.log(cats)
           // this.catstart=this.categories[0].id;
           // this.catend=this.categories[this.categories.length-1].id;
           // console.log(this.catstart);
@@ -112,10 +127,12 @@ export class MenuComponent implements OnInit {
           })
           let resobj=await res.json();
           cat.menuitems=resobj.data;
+          // console.log(cat.menuitems)
           }
           this.categories=cats;
         });
       }
+
     });
 
     // localStorage.removeItem("start");
@@ -148,48 +165,356 @@ export class MenuComponent implements OnInit {
     
 
 
-  getItems(cat:any){
+//   getItems(cat:any){
 
-console.log(cat)
-              fetch(cat.href.menuitems, {
-              method: 'GET', 
-              headers: {
-              'Content-Type': 'application/json',
-              "Accept":"application/json"
-            }
-          })
-          .then(response => response.json())
-          .then(data => {
+// console.log(cat)
+//               fetch(cat.href.menuitems, {
+//               method: 'GET', 
+//               headers: {
+//               'Content-Type': 'application/json',
+//               "Accept":"application/json"
+//             }
+//           })
+//           .then(response => response.json())
+//           .then(data => {
             
-            console.log('Success:', data);
-            cat.menuitems=data.data;
-            // displaydata(data);
+//             console.log('Success:', data);
+//             cat.menuitems=data.data;
+//             // displaydata(data);
             
-            // this.resdata=data;
-            // console.log( data.data.length);
+//             // this.resdata=data;
+//             // console.log( data.data.length);
             
-          })
-          .catch((error) => {
-            console.error('Error:', error);
-          });
+//           })
+//           .catch((error) => {
+//             console.error('Error:', error);
+//           });
 
-          // console.log(this.i);
-          // this.i=0;
-          // while(this.i<this.length){}
-          // console.log(this.resdata);
+//           // console.log(this.i);
+//           // this.i=0;
+//           // while(this.i<this.length){}
+//           // console.log(this.resdata);
 
-       }
+//        }
 
 
        
+addToCart(item:any){
+
+  console.log(item)
+  console.log(this.user.token)
+  // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                fetch(`http://127.0.0.1:8000/api/restaurants/${item.restaurant_id}/menuitems/${item.id}/cartitems`, {
+                method: 'POST', 
+                // credentials: 'include',
+                headers: {
+                  'Authorization': `Bearer ${this.user.token}`,
+                'Content-Type': 'application/json',
+                "Accept":"application/json",
+                
+                
+
+               
+                // 'Authorization': bearer,
+              }
+            })
+            .then(response => response.json())
+            .then(async data => {
+              
+              console.log('Success:', data.cart.href.cartitems);
+              this.cart=data.cart;
+              this.cartItem=data.cartitem;
+              // data.cart-item
+              // console.log(this.cart)
+              //  console.log(this.cartItem)
+                this.items=data.cart.href.cartitems;
+                console.log(this.items)
+
+                let res = await fetch(this.items, {
+                  method: 'GET',
+                  headers: {
+                    'Authorization': `Bearer ${this.user.token}`,
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json"
+                  }
+                })
+                let resobj=await res.json();
+                this.items=resobj.data;
+                console.log(this.items)
+                // for(let i=0;i<=this.items.lenght;i++)
+                // {
+                //   console.log(this.items[i].menu_item_name);
+
+                 
+                // }
+                
+              // let resobj= res.json();
+              // for(let i=0;i<resobj.length;i++)
+              // {
+              //   let name=
+              // }
+              // console.log(resobj)
+              
+
+
+              // console.log(this.cartData)
+              // cat.menuitems=data.data;
+              // displaydata(data);
+              
+              // this.resdata=data;
+              // console.log( data.data.length);
+              
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+  
+            // console.log(this.i);
+            // this.i=0;
+            // while(this.i<this.length){}
+            // console.log(this.resdata);
+  
+         }
+  
+  
+      
+         
+         plus(i:any){
+
+          console.log(i)
+          console.log(this.user.token)
+          // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                        fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {
+                        method: 'POST', 
+                        // credentials: 'include',
+                        headers: {
+                          'Authorization': `Bearer ${this.user.token}`,
+                        'Content-Type': 'application/json',
+                        "Accept":"application/json",
+                        
+                        
+        
+                       
+                        // 'Authorization': bearer,
+                      }
+                    })
+                    .then(response => response.json())
+                    .then(async data => {
+                      
+                      console.log('Success:', data.cart.href.cartitems);
+                      this.cart=data.cart;
+                      this.cartItem=data.cartitem;
+                      // data.cart-item
+                      // console.log(this.cart)
+                      //  console.log(this.cartItem)
+                        this.items=data.cart.href.cartitems;
+                        console.log(this.items)
+        
+                        let res = await fetch(this.items, {
+                          method: 'GET',
+                          headers: {
+                            'Authorization': `Bearer ${this.user.token}`,
+                            'Content-Type': 'application/json',
+                            "Accept": "application/json"
+                          }
+                        })
+                        let resobj=await res.json();
+                        this.items=resobj.data;
+                        console.log(this.items)
+                        // for(let i=0;i<=this.items.lenght;i++)
+                        // {
+                        //   console.log(this.items[i].menu_item_name);
+        
+                         
+                        // }
+                        
+                      // let resobj= res.json();
+                      // for(let i=0;i<resobj.length;i++)
+                      // {
+                      //   let name=
+                      // }
+                      // console.log(resobj)
+                      
+        
+        
+                      // console.log(this.cartData)
+                      // cat.menuitems=data.data;
+                      // displaydata(data);
+                      
+                      // this.resdata=data;
+                      // console.log( data.data.length);
+                      
+                    })
+                    .catch((error) => {
+                      console.error('Error:', error);
+                    });
+          
+                    // console.log(this.i);
+                    // this.i=0;
+                    // while(this.i<this.length){}
+                    // console.log(this.resdata);
+          
+                 }
+               
+
+                 minus(i:any){
+
+                  console.log(i)
+                  console.log(this.user.token)
+                  // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                                     // http://127.0.0.1:8000/api/restaurants/4/menuitems/6/carts/2/cartitems/2
+                                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                                method: 'POST', 
+                                // credentials: 'include',
+                                headers: {
+                                  'Authorization': `Bearer ${this.user.token}`,
+                                'Content-Type': 'application/json',
+                                "Accept":"application/json",
+                                
+                                
+                
+                               
+                                // 'Authorization': bearer,
+                              }
+                            })
+                            .then(response => response.json())
+                            .then(async data => {
+                              
+                              // console.log('Success:', data.cart.href.cartitems);
+                              this.cart=data.cart;
+                              this.cartItem=data.cartitem;
+                              // data.cart-item
+                              // console.log(this.cart)
+                              //  console.log(this.cartItem)
+                                this.items=data.cart.href.cartitems;
+                                // console.log(this.items)
+                
+                                let res = await fetch(this.items, {
+                                  method: 'GET',
+                                  headers: {
+                                    'Authorization': `Bearer ${this.user.token}`,
+                                    'Content-Type': 'application/json',
+                                    "Accept": "application/json"
+                                  }
+                                })
+                                let resobj=await res.json();
+                                this.items=resobj.data;
+                                // console.log(this.items)
+                                // for(let i=0;i<=this.items.lenght;i++)
+                                // {
+                                //   console.log(this.items[i].menu_item_name);
+                
+                                 
+                                // }
+                                
+                              // let resobj= res.json();
+                              // for(let i=0;i<resobj.length;i++)
+                              // {
+                              //   let name=
+                              // }
+                              // console.log(resobj)
+                              
+                
+                
+                              // console.log(this.cartData)
+                              // cat.menuitems=data.data;
+                              // displaydata(data);
+                              
+                              // this.resdata=data;
+                              // console.log( data.data.length);
+                              
+                            })
+                            .catch((error) => {
+                              console.error('Error:', error);
+                            });
+                  
+                            // console.log(this.i);
+                            // this.i=0;
+                            // while(this.i<this.length){}
+                            // console.log(this.resdata);
+                  
+                         }
 
 
 
 
+                         destoryCart(i:any){
 
-
-
-
+                          console.log(i)
+                          console.log(this.user.token)
+                          // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                                             // http://127.0.0.1:8000/api/restaurants/4/carts/2/cartitems/2
+                                        fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                                        method: 'DELETE', 
+                                        // credentials: 'include',
+                                        headers: {
+                                          'Authorization': `Bearer ${this.user.token}`,
+                                        'Content-Type': 'application/json',
+                                        "Accept":"application/json",
+                                        
+                                        
+                        
+                                       
+                                        // 'Authorization': bearer,
+                                      }
+                                    })
+                                    .then(response => response.json())
+                                    .then(async data => {
+                                      
+                                      // console.log('Success:', data.cart.href.cartitems);
+                                      this.cart=data.cart;
+                                      this.cartItem=data.cartitem;
+                                      // data.cart-item
+                                      // console.log(this.cart)
+                                      //  console.log(this.cartItem)
+                                        this.items=data.cart.href.cartitems;
+                                        // console.log(this.items)
+                        
+                                        let res = await fetch(this.items, {
+                                          method: 'GET',
+                                          headers: {
+                                            'Authorization': `Bearer ${this.user.token}`,
+                                            'Content-Type': 'application/json',
+                                            "Accept": "application/json"
+                                          }
+                                        })
+                                        let resobj=await res.json();
+                                        this.items=resobj.data;
+                                        // console.log(this.items)
+                                        // for(let i=0;i<=this.items.lenght;i++)
+                                        // {
+                                        //   console.log(this.items[i].menu_item_name);
+                        
+                                         
+                                        // }
+                                        
+                                      // let resobj= res.json();
+                                      // for(let i=0;i<resobj.length;i++)
+                                      // {
+                                      //   let name=
+                                      // }
+                                      // console.log(resobj)
+                                      
+                        
+                        
+                                      // console.log(this.cartData)
+                                      // cat.menuitems=data.data;
+                                      // displaydata(data);
+                                      
+                                      // this.resdata=data;
+                                      // console.log( data.data.length);
+                                      
+                                    })
+                                    .catch((error) => {
+                                      console.error('Error:', error);
+                                    });
+                          
+                                    // console.log(this.i);
+                                    // this.i=0;
+                                    // while(this.i<this.length){}
+                                    // console.log(this.resdata);
+                          
+                                 }
 
 
 
@@ -233,6 +558,10 @@ console.log(cat)
 
 
 
+    
+
+
+
 
 
   //  
@@ -260,3 +589,4 @@ console.log(cat)
   
 // }
 
+// fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {

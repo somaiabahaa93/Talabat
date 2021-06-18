@@ -45,7 +45,10 @@ export class ResturantsService {
     return this._http.get(`${environment.baseUrl}/${id}/ratings`);
   }
 
+  // addToCart(id: any,id1:any){
+  //      return this._http.get(`${environment.baseUrl}/${id}/menuitems/${id1}/cartitems`)
   
+  //    }
   // getMenuItems(id: any,id1:any){
   //   return this._http.get(`${environment.baseUrl}/${id}/menucategories/${id2}/menuitems`)
 
