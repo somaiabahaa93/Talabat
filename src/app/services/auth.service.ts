@@ -16,6 +16,7 @@ import { isNull } from '@angular/compiler/src/output/output_ast';
 export class AuthService {
     private userSubject: BehaviorSubject<User>;
     public user: Observable<User>;
+    
 
     constructor(
         private router: Router,
@@ -29,7 +30,7 @@ export class AuthService {
         return this.userSubject.value;
     }
 
-    login(email: any, password: any) {
+    login(email: string, password: string) {
         return this.http.post<User>(`${environment.apiUrl}/api/logincustomer`, { email, password })
             .pipe(map(user => {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -47,7 +48,7 @@ export class AuthService {
           this.userSubject.next(null!);
         //   this.userSubject.next(null);
 
-        this.router.navigate(['/login']);
+        // this.router.navigate(['/login']);
         
     }
 

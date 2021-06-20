@@ -15,6 +15,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent  {
+  
   // isSignedIn: boolean = false;
   // authenticated=false;
   // token!: string;
@@ -52,17 +53,24 @@ export class NavbarComponent  {
   // }
 
 
-
-  user!: User;
+  user!:User
+  currentUser:any
   //  isLoggedIn = this.user && this.user.token;
 
 
     constructor(private authService: AuthService) {
-        this.authService.user.subscribe(x => this.user = x);
-
+      
+        this.authService.user.subscribe(user => this.user = user);
+        // this.authService.logout();
+        // localStorage.removeItem('user');
+        // this.user=localStorage.getItem('user');
+        
+         this.currentUser=localStorage.getItem('user');
     }
-
+   
     logout() {
+
+      // this.currentUser=localStorage.getItem('user');
         this.authService.logout();
     }
 

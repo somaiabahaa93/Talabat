@@ -3,7 +3,7 @@
 
 <app-navbar></app-navbar>
 <div class="auth-wrapper">
-  <form class="form-signin" [formGroup]="form" (submit)="submit()" >
+  <form class="form-signin" [formGroup]="form" (ngSubmit)="submit()" >
       <h3 class="h3 mb-3 font-weight-normal text-center">Sign in</h3>
 
       <!-- Errors -->
@@ -29,7 +29,8 @@
           <label>Password</label>
           <input type="password" class="form-control" formControlName="password">
       </div>
-      <button type="submit" class="btn btn-block btn-primary">Log in</button>
+      <button [disabled]="!form.valid" type="submit" class="btn btn-block btn-primary">Log in</button>
+      <div class="mt-2" *ngIf="errors">* Error: </div>
       <a [routerLink]="['/register']"  >create new account?</a>
   </form>
 </div>

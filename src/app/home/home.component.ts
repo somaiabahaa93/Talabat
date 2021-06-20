@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   // isLogin:boolean=false;
   constructor( private http:HttpClient) { }
+  
 
   ngOnInit() {
     // this.isLogin= this.authService.isLoggedIn();

@@ -90,29 +90,31 @@ submit():void{
         
     //     }
     // });
-    this.submitted = true;
+    // this.submitted = true;
 
     // reset alerts on submit
-    this.alertService.clear();
+    // this.alertService.clear();
 
     // stop here if form is invalid
     if (this.form.invalid) {
         return;
     }
 
-    this.loading = true;
+    // this.loading = true;
     this.authService.login(this.f.email.value, this.f.password.value)
         .pipe(first())
         .subscribe({
-            next: (res:any) => {
-                console.log(res.user.first_name)
+            next: () => {
+                // console.log(res.user.first_name)
                 // get return url from query parameters or default to home page
-                const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-                this.router.navigateByUrl(returnUrl);
+                // const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+                // this.router.navigateByUrl(returnUrl);
+                this.router.navigate(['']);
             },
             error: error => {
-                this.alertService.error(error);
-                this.loading = false;
+                // this.alertService.error(error);
+                // this.loading = false;
+                this.errors = error;
             }
         });
 }
