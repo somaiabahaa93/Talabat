@@ -56,9 +56,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 // import { AuthInterceptor } from './shared/auth.interceptor';
 import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ResturantDetailsModule } from './resturant-details/resturant-details.module';
-import { JwtInterceptor } from './_helpers/jwt.interceptor';
-import { ErrorInterceptor } from './_helpers/error.interceptor';
+// import { JwtInterceptor } from './_helpers/jwt.interceptor';
+// import { ErrorInterceptor } from './_helpers/error.interceptor';
 import { LetsGoComponent } from './lets-go/lets-go.component';
+import { VendorLoginComponent } from './vendor-login/vendor-login.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -93,6 +95,8 @@ import { LetsGoComponent } from './lets-go/lets-go.component';
     RegisterComponent,
     NavbarComponent,
     LetsGoComponent,
+    VendorLoginComponent,
+    MyAccountComponent,
     // SigninComponent,
     // SignupComponent,
     // UserProfileComponent,
@@ -149,8 +153,8 @@ import { LetsGoComponent } from './lets-go/lets-go.component';
     
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // {
     //   provide: HTTP_INTERCEPTORS,
     //   useClass: AuthInterceptor,

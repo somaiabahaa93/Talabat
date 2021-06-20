@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router } from '@angular/router';
+import { first } from 'rxjs/operators';
+import { AlertService } from '../services/alert.service';
+import { AuthService } from '../services/auth.service';
 // import { AuthService } from '../shared/auth.service';
 // import { AuthService } from './../../shared/auth.service';
 
@@ -11,42 +15,58 @@ import { Router } from '@angular/router';
   styleUrls: ['./vendor-register.component.scss']
 })
 export class VendorRegisterComponent implements OnInit {
-  registerForm: FormGroup;
-  errors=null;
-  constructor(
-    public router: Router,
-    public fb: FormBuilder,
-    // public authService: AuthService
-  ) { 
-    this.registerForm = this.fb.group({
-      first_name: [''],
-      last_name: [''],
-      email: [''],
-      password: [''],
-      confirm_password: [''],
-      gender: [''],
-      date_of_birth:[''],
-      mobile_number:[]
-     
-    })
+  // registerForm: FormGroup 
+  errors:any;
+  form!: FormGroup;
+  loading = false;
+  submitted = false;
+
+  constructor(private formbuilder:FormBuilder,
+    private http:HttpClient,
+    private router:Router,
+    private route: ActivatedRoute,
+
+    private authService: AuthService,
+    private alertService: AlertService) { }
+
+    ngOnInit(): void {
+      this.form = this.formbuilder.group({
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        confirm_password: ['', Validators.required],
+        gender: ['', Validators.required],
+        date_of_birth: ['', Validators.required],
+        mobile_number: ['', Validators.required],
+          });
   }
 
-  ngOnInit(): void {
-  }
+  onsubmit():void{
+    this.submitted = true;
 
-  onSubmit() {
-    // this.authService.register(this.registerForm.value).subscribe(
-    //   result => {
-    //     console.log(result)
-    //   },
-    //   error => {
-    //     this.errors = error.error;
-    //   },
-    //   () => {
-    //     this.registerForm.reset()
-    //     this.router.navigate(['signin']);
-    //   }
-    // )
-  }
+        // reset alerts on submit
+        this.alertService.clear();
+
+        // stop here if form is invalid
+        if (this.form.invalid) {
+            return this.errors;
+        }
+
+        this.loading = true;
+        this.authService.registerVendor(this.form.value)
+            .pipe(first())
+            .subscribe({
+                next: (res:any) => {
+                       console.log(res);
+                    this.alertService.success('Registration successful', { keepAfterRouteChange: true });
+                    this.router.navigate(['../vendorLogin'], { relativeTo: this.route });
+                },
+                error: error => {
+                    this.alertService.error(error);
+                    this.loading = false;
+                }
+            });
+}
 
 }

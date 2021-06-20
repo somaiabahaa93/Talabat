@@ -54,9 +54,12 @@ export class NavbarComponent  {
 
 
   user!: User;
+  //  isLoggedIn = this.user && this.user.token;
+
 
     constructor(private authService: AuthService) {
         this.authService.user.subscribe(x => this.user = x);
+
     }
 
     logout() {

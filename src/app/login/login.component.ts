@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
     form!: FormGroup;
     loading = false;
     submitted = false;
+    // errors:any;
+    errors = '';
     // user!: User;
 
   constructor(private formbuilder:FormBuilder,

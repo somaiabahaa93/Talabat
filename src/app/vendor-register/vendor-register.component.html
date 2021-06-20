@@ -8,7 +8,7 @@ background-size:cover;">
         </div>
       </a>
 
-      <a class="float-right mx-5" style="border: solid 2px rgb(255, 90, 0);color: white;padding: 10px;border-radius: 10px;">Vendor Portal</a>
+      <a class="float-right mx-5" style="border: solid 2px rgb(255, 90, 0);color: white;padding: 10px;border-radius: 10px;" [routerLink]="['/vendorLogin']" routerLinkActive="router-link-active" >Vendor Portal</a>
       
         
    </div> 
@@ -37,7 +37,7 @@ background-size:cover;">
 </ul>
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-  <form class="form-signin col-md-8 m-auto" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="form-signin col-md-8 m-auto" [formGroup]="form" (submit)="onsubmit()" >
 
       <!-- Errors -->
       <!-- <div *ngIf="errors?.first_name" class="alert alert-danger mt-3">
@@ -99,8 +99,9 @@ background-size:cover;">
         <input type="text" class="form-control" formControlName="mobile_number">
       </div>
       <button type="submit" class="btn btn-block" style="background-color: #ff5a00; color:white;">Next</button>
-</form></div>
-  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <form class="form-signin col-md-8 m-auto" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+</form>
+</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <form class="form-signin col-md-8 m-auto">
 
       <!-- Errors -->
       <!-- <div *ngIf="errors?.first_name" class="alert alert-danger mt-3">

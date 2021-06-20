@@ -8,11 +8,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LetsGoComponent } from './lets-go/lets-go.component';
 import { LoginComponent } from './login/login.component';
+import { MyAccountComponent } from './my-account/my-account.component';
 import { RegisterComponent } from './register/register.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
+import { VendorLoginComponent } from './vendor-login/vendor-login.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
-import { AuthGuard } from './_helpers/auth.guard';
+// import { AuthGuard } from './_helpers/auth.guard';
 // import { UsersModule } from './users/users.module';
 
 // import { AuthGuard } from './_helpers';
@@ -39,8 +41,16 @@ const routes: Routes = [
   component: RegisterComponent
 },
 {
+  path: 'myAccount',
+  component: MyAccountComponent
+},
+{
   path: 'vendor-register',
-  component: VendorRegisterComponent,canActivate: [AuthGuard]
+  component: VendorRegisterComponent
+},
+{
+  path: 'vendorLogin',
+  component: VendorLoginComponent
 },
 {
   path: 'login',

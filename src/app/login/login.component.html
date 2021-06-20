@@ -16,7 +16,10 @@
       <div *ngIf="errors?.error" class="alert alert-danger mt-3">
           {{ errors?.error }}
       </div> -->
+      <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
 
+      <div *ngIf="f.email.errors.required">email is required</div>
+      </div> -->
       <!-- Login -->
       <div class="form-group">
           <label>Email address</label>

@@ -45,6 +45,7 @@ export class AuthService {
         localStorage.removeItem('user');
 
           this.userSubject.next(null!);
+        //   this.userSubject.next(null);
 
         this.router.navigate(['/login']);
         
@@ -52,6 +53,22 @@ export class AuthService {
 
     register(user: User) {
         return this.http.post(`${environment.apiUrl}/api/registercustomer`, user);
+    }
+
+    registerVendor(user:User){
+        return this.http.post(`${environment.apiUrl}/api/registervendor`, user);
+ 
+    }
+
+    loginVendor(email: any, password: any) {
+        return this.http.post<User>(`${environment.apiUrl}/api/loginvendor`, { email, password })
+            .pipe(map(user => {
+                // store user details and jwt token in local storage to keep user logged in between page refreshes
+                // console.log(user)
+                localStorage.setItem('user', JSON.stringify(user));
+                this.userSubject.next(user);
+                return user;
+            }));
     }
 
     // getAll() {
