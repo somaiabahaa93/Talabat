@@ -114,7 +114,8 @@ submit():void{
             error: error => {
                 // this.alertService.error(error);
                 // this.loading = false;
-                this.errors = error;
+                this.errors = "email or password are not correct";
+                console.log(this.errors)
             }
         });
 }

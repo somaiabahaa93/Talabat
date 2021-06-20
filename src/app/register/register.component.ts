@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscriber } from 'rxjs';
 import { first } from 'rxjs/operators';
+import { User } from '../models';
 import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
 
@@ -15,6 +16,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
     form!: FormGroup;
+    err!:User;
     loading = false;
     submitted = false;
  
@@ -46,14 +48,14 @@ export class RegisterComponent implements OnInit {
         // gender:'',
         // date-of-birth:'',
         // mobile-number:'',
-        first_name: ['', Validators.required],
-        last_name: ['', Validators.required],
-        email: ['', Validators.required],
-        password: ['', Validators.required],
-        confirm_password: ['', Validators.required],
-        gender: ['', Validators.required],
-        date_of_birth: ['', Validators.required],
-        mobile_number: ['', Validators.required],
+        first_name: [''],
+        last_name: [''],
+        email: [''],
+        password: [''],
+        confirm_password: [''],
+        gender: [''],
+        date_of_birth: [''],
+        mobile_number: [''],
 
 
         
@@ -109,6 +111,10 @@ submit():void{
                 error: error => {
                     this.alertService.error(error);
                     this.loading = false;
+                    // console.log(error.error.errors);
+                    this.err=error.error.errors;
+                    console.log(this.err);
+                    console.log(this.err.email);
                 }
             });
 }

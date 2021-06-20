@@ -15,6 +15,7 @@ export interface User {
     confirm_password: string;
     gender:string;
     date_of_birth:Date;
+    mobile_number:number;
     token: string;
 
 }
