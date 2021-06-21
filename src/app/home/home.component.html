@@ -11,8 +11,21 @@
         <h1>Order food online in Egypt</h1>
       </div>
       <div class="search--input">
-        <input type="text" value=""  placeholder="Search for area, street, landmark...">
-        <button mat-flat-button class="btn" style="color: white;" [routerLink]="['letsGo']" routerLinkActive="router-link-active" >Let's Go</button>
+        
+        <input type="text" value="" [(ngModel)]="search" placeholder="Search for area, street, landmark...">
+        <!-- <button  mat-flat-button class="btn" style="color: white;" [routerLink]="['letsGo']" routerLinkActive="router-link-active" >Let's Go</button> -->
+        
+        <!-- <p>You can pass an existing component as content of the modal window. In this case, if you're still using Angular 8 or older, remember to add the content component
+          in the <code>entryComponents</code> section of your <code>NgModule</code>. For Angular 9 or newer, it's not needed anymore.
+          </p> -->
+          <!-- <div *ngIf="!search; else enableTemplate"> -->
+          <button *ngIf="!search; else enableTemplate" disabled="true" style="color: white;" class="btn " >Let's Go</button>
+      <!-- </div> -->
+      <ng-template #enableTemplate>
+        <!-- <div> -->
+         <button (click)="open()"  style="color: white;" class="btn " >Let's Go</button>
+        <!-- </div> -->
+    </ng-template>
       </div>
     </div>
   </div>
@@ -189,4 +202,4 @@
 
 <!-- <app-map></app-map> -->
 
-
+<!-- <div id="map"></div> -->
