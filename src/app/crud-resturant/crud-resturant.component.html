@@ -1,6 +1,11 @@
-<h1>Users</h1>
+<div style=" color:white; background-image: url(assets/img/background1_2.jpg); height: 650px;background-size: cover;">
+    <h1>Restaurants</h1>
+
 <a routerLink="/addResturant" class="btn btn-sm btn-success mb-2">Add Restaurant</a>
-<table class="table table-striped">
+<div *ngIf="message" class="alert alert-danger" role="alert">
+    {{message}}
+  </div>
+<table class="table" style="color: white;" >
     <thead>
         <tr>
             <th style="width: 30%">Restaurant Name</th>
@@ -21,7 +26,7 @@
                     <span *ngIf="!user.isDeleting">Delete</span>
                 </button> -->
                 <button routerLink="/editResturant/{{resturant.id}}"  class="btn btn-success">Edit</button>
-                <button (click)="delete(resturant.id)" class="btn btn-danger">Delete</button>
+                <button (click)="delete(resturant.id)" class="btn btn-danger ml-2">Delete</button>
             </td>
         </tr>
         <tr *ngIf="!resturants">
@@ -31,3 +36,4 @@
         </tr>
     </tbody>
 </table>
+</div>

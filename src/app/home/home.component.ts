@@ -4,6 +4,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 // import { AuthService } from '../guard/auth.service';
 
 import {  Input } from '@angular/core';
+import { Router } from '@angular/router';
 // import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 declare const L: any;
 @Component({
@@ -18,14 +19,32 @@ declare const L: any;
     <div class="modal-body">
     <div style="height: 90vh;width: 70vh;" id="map"> </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Delivery Here</button>
+      <button type="button" class="btn btn-outline-dark" (click)="nearBy()">Delivery Here</button>
     </div>
   `
 })
 export class NgbdModalContent {
   // @Input() name: any;
+ 
+  data:any;
+  constructor(public activeModal: NgbActiveModal,
+    private router:Router,) {}
+  nearBy(){
+    console.log('lat:'+localStorage.getItem("lat"));
+    console.log('lon:'+localStorage.getItem("lon"));
 
-  constructor(public activeModal: NgbActiveModal) {}
+    this.router.navigate(['letsGo']);
+    this.activeModal.close('Close click')
+
+
+
+
+
+
+     }
+
+
+
 }
 @Component({
   selector: 'app-home',
@@ -36,6 +55,9 @@ export class HomeComponent implements OnInit {
   // isLogin:boolean=false;
   title = 'Map';
   search:string='';
+  lat:any;
+  lon:any;
+  
   constructor( private http:HttpClient,private modalService: NgbModal) { }
   
 
@@ -113,9 +135,14 @@ export class HomeComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
       const latLong = [coords.latitude, coords.longitude];
-      console.log(
-        `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-      );
+      // console.log(
+      //   `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+      // );
+      this.lon=position.coords.longitude;
+      this.lat=position.coords.latitude;
+      localStorage.setItem("lat",this.lat);
+      localStorage.setItem("lon",this.lon);
+
       let mymap = L.map('map').setView(latLong, 13);
       let search = L.Control.geocoder().addTo(mymap);
       console.log(search);
@@ -177,4 +204,5 @@ export class HomeComponent implements OnInit {
       }
     );
   }
+  
 }

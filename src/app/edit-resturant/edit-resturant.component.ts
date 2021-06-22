@@ -18,6 +18,7 @@ export class EditResturantComponent implements OnInit {
   resturant!:Resturant
   private _routeParamsSub!: Subscription;
   user = this.authService.userValue;
+  message:any;
 
 
 
@@ -113,8 +114,19 @@ export class EditResturantComponent implements OnInit {
                 body: JSON.stringify(this.form.value),
             })
             // .then(response => response.json())
+
+            .then(response => response.json())
+            .then(async data => {
+              
+               console.log('Success:', data.message);
+              this.message=data.message;
+              console.log(this.message)
+            })
+
+
+
             .then(async data=>{
-              this._router.navigate(['crudResturant']);
+              // this._router.navigate(['crudResturant']);
               this.resturantService.getResturants().subscribe((res: any) => {
                 this.resturants = res.data;
                 // console.log(res.error)

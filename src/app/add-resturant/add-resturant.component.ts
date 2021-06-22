@@ -17,7 +17,8 @@ export class AddResturantComponent implements OnInit {
 
   form!: FormGroup;
   user = this.authService.userValue;
-  constructor(private resturantService: ResturantsService,private authService: AuthService,private formbuilder:FormBuilder,
+  constructor(private resturantService: ResturantsService,private authService: AuthService
+    ,private formbuilder:FormBuilder,
     private http:HttpClient,
     private router:Router,
     private route: ActivatedRoute,

@@ -16,6 +16,7 @@ import { ResturantsService } from '../services/resturants.service';
 export class CrudResturantComponent implements OnInit {
   resturants: Resturant[] = [];
   resturant!:Resturant
+  message:any;
   private _routeParamsSub!: Subscription;
   user = this.authService.userValue;
   constructor(private resturantService: ResturantsService,
@@ -48,21 +49,23 @@ delete(id:any){
   
               }
             })
-            // .then(response => response.json())
-            // .then(async data => {
+            .then(response => response.json())
+            .then( data => {
               
-            //   console.log('Success:', data);
-            
+              // console.log('Success:', data.message);
+              this.message=data.message;
+              console.log(this.message)
+            })
                 
               .then(async data=>{
                 this.resturantService.getResturants().subscribe((res: any) => {
                   this.resturants = res.data;
-                  // console.log(res.error)
+                   console.log(res)
               });
               })
-            // })
+           
             .catch((error) => {
-              console.error('Error:', error);
+               console.error('Error here is:', error);
             });
   
 

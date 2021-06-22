@@ -65,7 +65,9 @@
 
         </div>
         </section> -->
-
+        <div *ngIf="message" class="alert alert-danger" role="alert">
+              {{message}}
+                    </div>
     <div style="width:20%;position: fixed;left:70%;top:44%; border:.5px solid rgb(219, 214, 214) ;">
         <h5 class="card-title px-3 pt-3 ml-0 pb-3 mb-0" style="background-color: orangered; color: white;">Your Cart</h5>
         <div *ngIf="!cart" class="text-center" style="background-color:  rgb(246, 246, 246);" >

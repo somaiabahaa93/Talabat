@@ -1,7 +1,9 @@
-<div class="auth-wrapper">
+<div class="auth-wrapper container w-50">
     <form  class="form-signin" [formGroup]="form" (submit)="submit(resturant.id)">
-        <h3 class="h3 mb-3 font-weight-normal text-center">Store-Details</h3>
-  
+        <h3 class="h3 my-3 font-weight-normal text-center">Store-Details</h3>
+        <div *ngIf="message" class="alert alert-danger" role="alert">
+          {{message}}
+        </div>
         
         <!-- Signup form -->
         

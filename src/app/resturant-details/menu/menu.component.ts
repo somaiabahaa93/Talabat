@@ -44,6 +44,7 @@ export class MenuComponent implements OnInit {
    cartItem!:CartItem;
   // cartItem!:{};
   items:any;
+  message:any;
    
 
   
@@ -221,7 +222,12 @@ addToCart(item:any){
             .then(response => response.json())
             .then(async data => {
               
-              console.log('Success:', data.cart.href.cartitems);
+              // console.log('Success:', data.cart.href.cartitems);
+              console.log('Success:', data);
+              this.message=data.message;
+              console.log(this.message);
+              
+
               this.cart=data.cart;
               this.cartItem=data.cartitem;
               // data.cart-item
@@ -302,6 +308,8 @@ addToCart(item:any){
                     .then(async data => {
                       
                       console.log('Success:', data.cart.href.cartitems);
+                      console.log('Success:', data);
+
                       this.cart=data.cart;
                       this.cartItem=data.cartitem;
                       // data.cart-item
