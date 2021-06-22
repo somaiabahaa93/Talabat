@@ -38,36 +38,61 @@ export class EditResturantComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.form = this.formbuilder.group({
-
-      
-
-
-      name:[''],
-    description:[''],
-    logo:[''],
-    location:[''],
-    location_longitude : [''],
-    location_latitude: [''],
-    working_hours:[''],
-    minimum_order:[''],
-    delivery_fees:[''],
-    cusine_id:[''],
-       
-      
-        });
-
 
     this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
       if (this.user.token) {
         this._resturantsService.getResturantById(paramMap.get('id')).subscribe((res: any) => {
           this.resturant = res.data;
           console.log(this.resturant);
+          
+          this.form = this.formbuilder.group({
+
+      
+
+
+            name:[this.resturant.name],
+            description:[this.resturant.description],
+            logo:[this.resturant.logo],
+            location:[this.resturant.location],
+            location_longitude : [this.resturant.location_longitude],
+            location_latitude: [this.resturant.location_latitude],
+            working_hours:[this.resturant.working_hours],
+            minimum_order:[this.resturant.minimum_order],
+            delivery_fees:[this.resturant.delivery_fees],
+            cusine_id:[this.resturant.cusine_id],
+               
+              
+                });
+
+
+
         });
        }
     });
+   
+    // this.form = this.formbuilder.group({
+
+      
+
+
+    // name:[''],
+    // description:[''],
+    // logo:[''],
+    // location:[''],
+    // location_longitude : [''],
+    // location_latitude: [''],
+    // working_hours:[''],
+    // minimum_order:[''],
+    // delivery_fees:[''],
+    // cusine_id:[''],
+       
+      
+    //     });
+
 
     
+
+        // console.log(this.form.value)
 
 
 
@@ -87,19 +112,19 @@ export class EditResturantComponent implements OnInit {
               },
                 body: JSON.stringify(this.form.value),
             })
-            .then(response => response.json())
-            .then(async data => {
-              
-              console.log('Success:', data);
-            
-                
-              
+            // .then(response => response.json())
+            .then(async data=>{
+              this._router.navigate(['crudResturant']);
+              this.resturantService.getResturants().subscribe((res: any) => {
+                this.resturants = res.data;
+                // console.log(res.error)
+            });
             })
             .catch((error) => {
               console.error('Error:', error);
             });
-
-             this._router.navigate(['crudResturant']);
+            console.log(this.form.value)
+            //  this._router.navigate(['crudResturant']);
 
   }
 

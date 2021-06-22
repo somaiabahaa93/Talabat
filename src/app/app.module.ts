@@ -64,6 +64,7 @@ import { MyAccountComponent } from './my-account/my-account.component';
 import { CrudResturantComponent } from './crud-resturant/crud-resturant.component';
 import { AddResturantComponent } from './add-resturant/add-resturant.component';
 import { EditResturantComponent } from './edit-resturant/edit-resturant.component';
+import { AuthGuard } from './_helpers';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -167,7 +168,7 @@ import { EditResturantComponent } from './edit-resturant/edit-resturant.componen
     //   multi: true
     // }
     // AuthService,
-    // AuthGuard,
+    AuthGuard,
     // RestaurantService,
     // {
     //   provide:HTTP_INTERCEPTORS,

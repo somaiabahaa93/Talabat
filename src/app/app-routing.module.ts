@@ -17,7 +17,7 @@ import { ResturantDetailsComponent } from './resturant-details/resturant-details
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { VendorLoginComponent } from './vendor-login/vendor-login.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
-// import { AuthGuard } from './_helpers/auth.guard';
+ import { AuthGuard } from './_helpers/auth.guard';
 // import { UsersModule } from './users/users.module';
 
 // import { AuthGuard } from './_helpers';
@@ -65,7 +65,7 @@ const routes: Routes = [
 },
 {
   path: "crudResturant",
-  component: CrudResturantComponent
+  component: CrudResturantComponent, canActivate: [AuthGuard]
 },
 {
   path: "addResturant",
