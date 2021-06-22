@@ -44,6 +44,9 @@ export class ResturantsService {
   getRating(id: any) {
     return this._http.get(`${environment.baseUrl}/${id}/ratings`);
   }
+  createResturant(params?:any){
+    return this._http.post(`${environment.baseUrl}`, { params });
+  }
 
   // addToCart(id: any,id1:any){
   //      return this._http.get(`${environment.baseUrl}/${id}/menuitems/${id1}/cartitems`)

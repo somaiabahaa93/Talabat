@@ -1,0 +1,33 @@
+<h1>Users</h1>
+<a routerLink="/addResturant" class="btn btn-sm btn-success mb-2">Add Restaurant</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Restaurant Name</th>
+            <th style="width: 30%">logo</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let resturant of resturants">
+            <td>{{resturant.name}} </td>
+            <td><img style="width:50px;height:50px" src="{{resturant.logo}}"></td>
+            <td>{{resturant.description}}</td>
+            <td style="white-space: nowrap">
+                <!-- <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger btn-delete-user" [disabled]="user.isDeleting">
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!user.isDeleting">Delete</span>
+                </button> -->
+                <button routerLink="/editResturant/{{resturant.id}}"  class="btn btn-success">Edit</button>
+                <button (click)="delete(resturant.id)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+        <tr *ngIf="!resturants">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>

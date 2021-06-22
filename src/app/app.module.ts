@@ -61,6 +61,9 @@ import { ResturantDetailsModule } from './resturant-details/resturant-details.mo
 import { LetsGoComponent } from './lets-go/lets-go.component';
 import { VendorLoginComponent } from './vendor-login/vendor-login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { CrudResturantComponent } from './crud-resturant/crud-resturant.component';
+import { AddResturantComponent } from './add-resturant/add-resturant.component';
+import { EditResturantComponent } from './edit-resturant/edit-resturant.component';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -97,6 +100,9 @@ import { MyAccountComponent } from './my-account/my-account.component';
     LetsGoComponent,
     VendorLoginComponent,
     MyAccountComponent,
+    CrudResturantComponent,
+    AddResturantComponent,
+    EditResturantComponent,
     // SigninComponent,
     // SignupComponent,
     // UserProfileComponent,

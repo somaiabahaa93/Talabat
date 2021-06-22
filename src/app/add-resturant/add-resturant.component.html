@@ -1,0 +1,74 @@
+<div class="auth-wrapper">
+    <form class="form-signin" [formGroup]="form" (submit)="submit()">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Store-Details</h3>
+  
+        
+        <!-- Signup form -->
+        
+        <div class="form-group">
+            <label>Restaurant Name</label>
+            <input type="text" class="form-control" formControlName="name">
+            
+        </div>
+       
+        <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="description">
+        </div>
+        
+        <div class="form-group">
+            <label>logo</label>
+            <input type="text" class="form-control" formControlName="logo">
+        </div>
+        
+        <div class="form-group">
+            <label>location</label>
+            <input type="text" class="form-control" formControlName="location">
+        </div>
+       
+        <div class="form-group">
+          <label>location_longitude</label>
+          <input type="number" class="form-control" formControlName="location_longitude">
+        </div>
+
+        <div class="form-group">
+            <label>location_latitude</label>
+            <input type="number" class="form-control" formControlName="location_latitude">
+        </div>
+        
+
+          
+        
+        <div class="form-group">
+          <label>working Hours</label><br> 
+           <input type="number" class="form-control" formControlName="working_hours"> 
+  
+  
+        </div>
+
+        <div class="form-group">
+            <label>Min. Order</label><br> 
+             <input type="number" class="form-control" formControlName="minimum_order"> 
+    
+    
+          </div>
+          <div class="form-group">
+            <label>Delivery Fees</label><br> 
+             <input type="number" class="form-control" formControlName="delivery_fees"> 
+    
+    
+          </div>
+          <div class="form-group">
+            <label>Cusine</label><br> 
+             <input type="number" class="form-control" formControlName="cusine_id"> 
+    
+    
+          </div>
+        
+        
+        
+        
+        <button  type="submit" class="btn btn-block btn-primary">Add</button>
+    </form>
+  </div>
+  

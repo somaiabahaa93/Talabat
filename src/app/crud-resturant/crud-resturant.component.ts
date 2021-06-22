@@ -1,0 +1,83 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { first } from 'rxjs/operators';
+import { Resturant } from '../models/resturant';
+import { AuthService } from '../services';
+import { CrudResturantService } from '../services/crud-resturant.service';
+import { ResturantsService } from '../services/resturants.service';
+
+@Component({
+  selector: 'app-crud-resturant',
+  templateUrl: './crud-resturant.component.html',
+  styleUrls: ['./crud-resturant.component.scss']
+})
+export class CrudResturantComponent implements OnInit {
+  resturants: Resturant[] = [];
+  resturant!:Resturant
+  private _routeParamsSub!: Subscription;
+  user = this.authService.userValue;
+  constructor(private resturantService: ResturantsService,
+    private authService: AuthService,
+    private _fb: FormBuilder,
+     private _route: ActivatedRoute,
+     private _resturantsService: ResturantsService,   
+      private _router: Router) {
+
+   }
+
+  ngOnInit(): void {
+    this.resturantService.getResturants().subscribe((res: any) => {
+      this.resturants = res.data;
+      // console.log(this.resturants)
+  });
+  
+}
+
+delete(id:any){
+  // console.log(id);
+  fetch(`http://127.0.0.1:8000/api/restaurants/${id}`, {
+                method: 'DELETE', 
+                // credentials: 'include',
+                headers: {
+                  'Authorization': `Bearer ${this.user.token}`,
+                'Content-Type': 'application/json',
+                "Accept":"application/json",
+                
+  
+              }
+            })
+            // .then(response => response.json())
+            // .then(async data => {
+              
+            //   console.log('Success:', data);
+            
+                
+              .then(async data=>{
+                this.resturantService.getResturants().subscribe((res: any) => {
+                  this.resturants = res.data;
+                  // console.log(res.error)
+              });
+              })
+            // })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+  
+
+}
+
+// edit(id:any){
+//   this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+//     if (this.user.token) {
+//       this._resturantsService.getResturantById(paramMap.get('id')).subscribe((res: any) => {
+//         this.resturant = res.data;
+//         console.log(this.resturant);
+//       });
+//      }
+//   });
+
+// }
+
+}

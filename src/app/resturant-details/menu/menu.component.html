@@ -26,7 +26,7 @@
           <img style="width: 100px;height: 100px; border-radius: 3px;" [src]="resturant?.logo">
           <div>
           <h4 class=" pl-3 pt-2">  {{resturant?.name}}</h4>
-          <h6 class="ml-2 text-muted"> Min. order: EGP {{resturant.minimum_order}}.00</h6>
+          <h6 class="ml-2 text-muted"> Min. order: EGP {{resturant?.minimum_order}}.00</h6>
           </div>
       </div>
       <div class="pr-3">
@@ -172,7 +172,9 @@
                                     
                                 </ul> -->
                                 <!-- <app-menuitems></app-menuitems> -->
-                                
+                                <!-- <div *ngIf="!user" class="alert alert-danger" role="alert">
+                                  A simple danger alert—check it out!
+                                </div> -->
                                 <div style="border-bottom: 1px solid rgb(190, 187, 187);" class="py-3 d-flex justify-content-between" *ngFor="let item of cat?.menuitems">
                                   <img style="width: 15%;height:15%" src="{{item.logo}}">
                                   <div class="text-center">
@@ -180,7 +182,7 @@
                                     <p class="text-muted">{{item.description}}</p>
                                   </div>
                                   <h6>EGP{{item.price}}.00</h6>
-                                  <svg (click)="addToCart(item)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="background-color:green;border-radius:50%; color:white" class="bi bi-plus" viewBox="0 0 16 16">
+                                  <svg  (click)="addToCart(item)" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" style="background-color:green;border-radius:50%; color:white" class="bi bi-plus" viewBox="0 0 16 16">
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
                                   </svg>
                                 </div>
@@ -304,19 +306,19 @@
               <tr>
                 <td class="pl-5">Minimum Order Amount</td>
                 
-                <td >EGP {{resturant.minimum_order}}.00</td>
+                <td >EGP {{resturant?.minimum_order}}.00</td>
               </tr>
               <tr>
                 
                 <td class="pl-5">Working Hours</td>
                 
-                <td>{{resturant.working_hours}}h</td>
+                <td>{{resturant?.working_hours}}h</td>
               </tr>
               <tr>
                 
                 <td class="pl-5">Service Charge</td>
               
-                <td>EGP {{resturant.delivery_fees}}.00</td>
+                <td>EGP {{resturant?.delivery_fees}}.00</td>
               </tr>
               <tr>
                 
