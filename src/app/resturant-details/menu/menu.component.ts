@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrowserStack } from 'protractor/built/driverProviders';
 import { Subscription } from 'rxjs';
@@ -31,6 +31,7 @@ import { ResturantsService } from 'src/app/services/resturants.service';
 
 export class MenuComponent implements OnInit {
   private _routeParamsSub!: Subscription;
+  formRate!: FormGroup;
   resturant!: Resturant;
   categories:Category[] = [];
   menuitems:MenuItem[]=[];
@@ -47,11 +48,12 @@ export class MenuComponent implements OnInit {
   message:any;
    
 
-  
+  rating!:Rating;
   // public resdata:[]=[];
   // public i:number=0;
   
   constructor(private _fb: FormBuilder,
+    private formbuilder: FormBuilder,
     private _route: ActivatedRoute,
     private _resturantsService: ResturantsService,  
       private _router: Router,
@@ -151,7 +153,18 @@ export class MenuComponent implements OnInit {
 
    
  
+    this.formRate = this.formbuilder.group({
 
+      order_packaging_score: [''],
+      delivery_time_score:[''],
+      value_for_money_score:[''],
+      quality_of_food_score:[''],
+      driver_performance_score : [''],
+      overall_score :[''],
+      review: [''],
+    
+      
+        });
 
 
 
@@ -200,12 +213,97 @@ export class MenuComponent implements OnInit {
 
 
        
-addToCart(item:any){
+  addToCart(item:any){
 
-  console.log(item)
+    console.log(item)
+    console.log(this.user.token)
+    // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                  fetch(`http://127.0.0.1:8000/api/restaurants/${item.restaurant_id}/menuitems/${item.id}/cartitems`, {
+                  method: 'POST', 
+                  // credentials: 'include',
+                  headers: {
+                    'Authorization': `Bearer ${this.user.token}`,
+                  'Content-Type': 'application/json',
+                  "Accept":"application/json",
+                  
+                  
+
+                
+                  // 'Authorization': bearer,
+                }
+              })
+              .then(response => response.json())
+              .then(async data => {
+                
+                // console.log('Success:', data.cart.href.cartitems);
+                console.log('Success:', data);
+                this.message=data.message;
+                console.log(this.message);
+                
+
+                this.cart=data.cart;
+                this.cartItem=data.cartitem;
+                // data.cart-item
+                // console.log(this.cart)
+                //  console.log(this.cartItem)
+                  this.items=data.cart.href.cartitems;
+                  console.log(this.items)
+
+                  let res = await fetch(this.items, {
+                    method: 'GET',
+                    headers: {
+                      'Authorization': `Bearer ${this.user.token}`,
+                      'Content-Type': 'application/json',
+                      "Accept": "application/json"
+                    }
+                  })
+                  let resobj=await res.json();
+                  this.items=resobj.data;
+                  console.log(this.items)
+                  // for(let i=0;i<=this.items.lenght;i++)
+                  // {
+                  //   console.log(this.items[i].menu_item_name);
+
+                  
+                  // }
+                  
+                // let resobj= res.json();
+                // for(let i=0;i<resobj.length;i++)
+                // {
+                //   let name=
+                // }
+                // console.log(resobj)
+                
+
+
+                // console.log(this.cartData)
+                // cat.menuitems=data.data;
+                // displaydata(data);
+                
+                // this.resdata=data;
+                // console.log( data.data.length);
+                
+              })
+              .catch((error) => {
+                console.error('Error:', error);
+              });
+    
+              // console.log(this.i);
+              // this.i=0;
+              // while(this.i<this.length){}
+              // console.log(this.resdata);
+    
+  }
+    
+    
+        
+          
+  plus(i:any){
+
+  console.log(i)
   console.log(this.user.token)
   // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                fetch(`http://127.0.0.1:8000/api/restaurants/${item.restaurant_id}/menuitems/${item.id}/cartitems`, {
+                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {
                 method: 'POST', 
                 // credentials: 'include',
                 headers: {
@@ -215,18 +313,15 @@ addToCart(item:any){
                 
                 
 
-               
+                
                 // 'Authorization': bearer,
               }
             })
             .then(response => response.json())
             .then(async data => {
               
-              // console.log('Success:', data.cart.href.cartitems);
+              console.log('Success:', data.cart.href.cartitems);
               console.log('Success:', data);
-              this.message=data.message;
-              console.log(this.message);
-              
 
               this.cart=data.cart;
               this.cartItem=data.cartitem;
@@ -251,7 +346,7 @@ addToCart(item:any){
                 // {
                 //   console.log(this.items[i].menu_item_name);
 
-                 
+                  
                 // }
                 
               // let resobj= res.json();
@@ -274,255 +369,172 @@ addToCart(item:any){
             .catch((error) => {
               console.error('Error:', error);
             });
-  
+
             // console.log(this.i);
             // this.i=0;
             // while(this.i<this.length){}
             // console.log(this.resdata);
-  
-         }
-  
-  
-      
-         
-         plus(i:any){
+  }
+                
 
-          console.log(i)
-          console.log(this.user.token)
-          // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                        fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {
-                        method: 'POST', 
-                        // credentials: 'include',
-                        headers: {
-                          'Authorization': `Bearer ${this.user.token}`,
-                        'Content-Type': 'application/json',
-                        "Accept":"application/json",
-                        
-                        
-        
-                       
-                        // 'Authorization': bearer,
-                      }
-                    })
-                    .then(response => response.json())
-                    .then(async data => {
-                      
-                      console.log('Success:', data.cart.href.cartitems);
-                      console.log('Success:', data);
+  minus(i:any){
 
-                      this.cart=data.cart;
-                      this.cartItem=data.cartitem;
-                      // data.cart-item
-                      // console.log(this.cart)
-                      //  console.log(this.cartItem)
-                        this.items=data.cart.href.cartitems;
-                        console.log(this.items)
-        
-                        let res = await fetch(this.items, {
-                          method: 'GET',
-                          headers: {
-                            'Authorization': `Bearer ${this.user.token}`,
-                            'Content-Type': 'application/json',
-                            "Accept": "application/json"
-                          }
-                        })
-                        let resobj=await res.json();
-                        this.items=resobj.data;
-                        console.log(this.items)
-                        // for(let i=0;i<=this.items.lenght;i++)
-                        // {
-                        //   console.log(this.items[i].menu_item_name);
-        
-                         
-                        // }
-                        
-                      // let resobj= res.json();
-                      // for(let i=0;i<resobj.length;i++)
-                      // {
-                      //   let name=
-                      // }
-                      // console.log(resobj)
-                      
-        
-        
-                      // console.log(this.cartData)
-                      // cat.menuitems=data.data;
-                      // displaydata(data);
-                      
-                      // this.resdata=data;
-                      // console.log( data.data.length);
-                      
-                    })
-                    .catch((error) => {
-                      console.error('Error:', error);
-                    });
-          
-                    // console.log(this.i);
-                    // this.i=0;
-                    // while(this.i<this.length){}
-                    // console.log(this.resdata);
-          
-                 }
-               
+  console.log(i)
+  console.log(this.user.token)
+  // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                      // http://127.0.0.1:8000/api/restaurants/4/menuitems/6/carts/2/cartitems/2
+                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                method: 'POST', 
+                // credentials: 'include',
+                headers: {
+                  'Authorization': `Bearer ${this.user.token}`,
+                'Content-Type': 'application/json',
+                "Accept":"application/json",
+                
+                
 
-                 minus(i:any){
+                
+                // 'Authorization': bearer,
+              }
+            })
+            .then(response => response.json())
+            .then(async data => {
+              
+              // console.log('Success:', data.cart.href.cartitems);
+              this.cart=data.cart;
+              this.cartItem=data.cartitem;
+              // data.cart-item
+              // console.log(this.cart)
+              //  console.log(this.cartItem)
+                this.items=data.cart.href.cartitems;
+                // console.log(this.items)
 
-                  console.log(i)
-                  console.log(this.user.token)
-                  // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                                     // http://127.0.0.1:8000/api/restaurants/4/menuitems/6/carts/2/cartitems/2
-                                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
-                                method: 'POST', 
-                                // credentials: 'include',
-                                headers: {
-                                  'Authorization': `Bearer ${this.user.token}`,
-                                'Content-Type': 'application/json',
-                                "Accept":"application/json",
-                                
-                                
-                
-                               
-                                // 'Authorization': bearer,
-                              }
-                            })
-                            .then(response => response.json())
-                            .then(async data => {
-                              
-                              // console.log('Success:', data.cart.href.cartitems);
-                              this.cart=data.cart;
-                              this.cartItem=data.cartitem;
-                              // data.cart-item
-                              // console.log(this.cart)
-                              //  console.log(this.cartItem)
-                                this.items=data.cart.href.cartitems;
-                                // console.log(this.items)
-                
-                                let res = await fetch(this.items, {
-                                  method: 'GET',
-                                  headers: {
-                                    'Authorization': `Bearer ${this.user.token}`,
-                                    'Content-Type': 'application/json',
-                                    "Accept": "application/json"
-                                  }
-                                })
-                                let resobj=await res.json();
-                                this.items=resobj.data;
-                                // console.log(this.items)
-                                // for(let i=0;i<=this.items.lenght;i++)
-                                // {
-                                //   console.log(this.items[i].menu_item_name);
-                
-                                 
-                                // }
-                                
-                              // let resobj= res.json();
-                              // for(let i=0;i<resobj.length;i++)
-                              // {
-                              //   let name=
-                              // }
-                              // console.log(resobj)
-                              
-                
-                
-                              // console.log(this.cartData)
-                              // cat.menuitems=data.data;
-                              // displaydata(data);
-                              
-                              // this.resdata=data;
-                              // console.log( data.data.length);
-                              
-                            })
-                            .catch((error) => {
-                              console.error('Error:', error);
-                            });
+                let res = await fetch(this.items, {
+                  method: 'GET',
+                  headers: {
+                    'Authorization': `Bearer ${this.user.token}`,
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json"
+                  }
+                })
+                let resobj=await res.json();
+                this.items=resobj.data;
+                // console.log(this.items)
+                // for(let i=0;i<=this.items.lenght;i++)
+                // {
+                //   console.log(this.items[i].menu_item_name);
+
                   
-                            // console.log(this.i);
-                            // this.i=0;
-                            // while(this.i<this.length){}
-                            // console.log(this.resdata);
+                // }
+                
+              // let resobj= res.json();
+              // for(let i=0;i<resobj.length;i++)
+              // {
+              //   let name=
+              // }
+              // console.log(resobj)
+              
+
+
+              // console.log(this.cartData)
+              // cat.menuitems=data.data;
+              // displaydata(data);
+              
+              // this.resdata=data;
+              // console.log( data.data.length);
+              
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
+
+            // console.log(this.i);
+            // this.i=0;
+            // while(this.i<this.length){}
+            // console.log(this.resdata);
+
+  }
+
+
+
+
+  destoryCart(i:any){
+
+  console.log(i)
+  console.log(this.user.token)
+  // var bearer = 'Bearer ' +  localStorage.getItem('user');
+                      // http://127.0.0.1:8000/api/restaurants/4/carts/2/cartitems/2
+                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                method: 'DELETE', 
+                // credentials: 'include',
+                headers: {
+                  'Authorization': `Bearer ${this.user.token}`,
+                'Content-Type': 'application/json',
+                "Accept":"application/json",
+                
+                
+
+                
+                // 'Authorization': bearer,
+              }
+            })
+            .then(response => response.json())
+            .then(async data => {
+              
+              // console.log('Success:', data.cart.href.cartitems);
+              this.cart=data.cart;
+              this.cartItem=data.cartitem;
+              // data.cart-item
+              // console.log(this.cart)
+              //  console.log(this.cartItem)
+                this.items=data.cart.href.cartitems;
+                // console.log(this.items)
+
+                let res = await fetch(this.items, {
+                  method: 'GET',
+                  headers: {
+                    'Authorization': `Bearer ${this.user.token}`,
+                    'Content-Type': 'application/json',
+                    "Accept": "application/json"
+                  }
+                })
+                let resobj=await res.json();
+                this.items=resobj.data;
+                // console.log(this.items)
+                // for(let i=0;i<=this.items.lenght;i++)
+                // {
+                //   console.log(this.items[i].menu_item_name);
+
                   
-                         }
+                // }
+                
+              // let resobj= res.json();
+              // for(let i=0;i<resobj.length;i++)
+              // {
+              //   let name=
+              // }
+              // console.log(resobj)
+              
 
 
+              // console.log(this.cartData)
+              // cat.menuitems=data.data;
+              // displaydata(data);
+              
+              // this.resdata=data;
+              // console.log( data.data.length);
+              
+            })
+            .catch((error) => {
+              console.error('Error:', error);
+            });
 
+            // console.log(this.i);
+            // this.i=0;
+            // while(this.i<this.length){}
+            // console.log(this.resdata);
 
-                         destoryCart(i:any){
-
-                          console.log(i)
-                          console.log(this.user.token)
-                          // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                                             // http://127.0.0.1:8000/api/restaurants/4/carts/2/cartitems/2
-                                        fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
-                                        method: 'DELETE', 
-                                        // credentials: 'include',
-                                        headers: {
-                                          'Authorization': `Bearer ${this.user.token}`,
-                                        'Content-Type': 'application/json',
-                                        "Accept":"application/json",
-                                        
-                                        
-                        
-                                       
-                                        // 'Authorization': bearer,
-                                      }
-                                    })
-                                    .then(response => response.json())
-                                    .then(async data => {
-                                      
-                                      // console.log('Success:', data.cart.href.cartitems);
-                                      this.cart=data.cart;
-                                      this.cartItem=data.cartitem;
-                                      // data.cart-item
-                                      // console.log(this.cart)
-                                      //  console.log(this.cartItem)
-                                        this.items=data.cart.href.cartitems;
-                                        // console.log(this.items)
-                        
-                                        let res = await fetch(this.items, {
-                                          method: 'GET',
-                                          headers: {
-                                            'Authorization': `Bearer ${this.user.token}`,
-                                            'Content-Type': 'application/json',
-                                            "Accept": "application/json"
-                                          }
-                                        })
-                                        let resobj=await res.json();
-                                        this.items=resobj.data;
-                                        // console.log(this.items)
-                                        // for(let i=0;i<=this.items.lenght;i++)
-                                        // {
-                                        //   console.log(this.items[i].menu_item_name);
-                        
-                                         
-                                        // }
-                                        
-                                      // let resobj= res.json();
-                                      // for(let i=0;i<resobj.length;i++)
-                                      // {
-                                      //   let name=
-                                      // }
-                                      // console.log(resobj)
-                                      
-                        
-                        
-                                      // console.log(this.cartData)
-                                      // cat.menuitems=data.data;
-                                      // displaydata(data);
-                                      
-                                      // this.resdata=data;
-                                      // console.log( data.data.length);
-                                      
-                                    })
-                                    .catch((error) => {
-                                      console.error('Error:', error);
-                                    });
-                          
-                                    // console.log(this.i);
-                                    // this.i=0;
-                                    // while(this.i<this.length){}
-                                    // console.log(this.resdata);
-                          
-                                 }
+  }
 
 
 
@@ -563,16 +575,47 @@ addToCart(item:any){
 
     //    }
 
+    review(){
+
+      console.log(this.formRate.value)
+
+          fetch(`http://127.0.0.1:8000/api/restaurants/${this.resturant.id}/ratings`, {
+            method: 'POST', 
+            // credentials: 'include',
+            headers: {
+              'Authorization': `Bearer ${this.user.token}`,
+            'Content-Type': 'application/json',
+            "Accept":"application/json",
+            
+
+          },
+            body: JSON.stringify(this.formRate.value),
+        })
+        // .then(response => response.json())
+
+        .then(response => response.json())
+        .then(async data => {
+          
+           console.log('Success:', data);
+          
+        })
 
 
 
-    
+        
+        .catch((error) => {
+          console.error('Error:', error);
+        });
 
 
 
 
 
-  //  
+
+    }
+
+
+
 
  }
 

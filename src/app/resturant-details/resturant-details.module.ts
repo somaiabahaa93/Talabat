@@ -4,6 +4,8 @@ import { ResturantDetailsRoutingModule } from './resurant-details-routing.module
 import { ResturantDetailsComponent } from './resturant-details.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuitemsComponent } from './menuitems/menuitems.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +13,10 @@ import { MenuitemsComponent } from './menuitems/menuitems.component';
   declarations: [ MenuComponent, MenuitemsComponent],
   imports: [
     CommonModule,
-   ResturantDetailsRoutingModule 
+   ResturantDetailsRoutingModule,
+   FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ]
 })
 export class ResturantDetailsModule { }

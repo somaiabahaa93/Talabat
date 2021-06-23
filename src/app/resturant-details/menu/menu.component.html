@@ -297,6 +297,129 @@
               </div>
             
           </div>
+
+          <div class="mt-5 ml-5 w-50">
+            <form class="form-signin" [formGroup]="formRate" (submit)="review()">
+            
+            
+            <div class="form-group">
+             
+              <label for="order_packaging_score">order_packaging_score:</label>
+     
+               <select class=" custom-select" formControlName="order_packaging_score"  id="order_packaging_score">
+                 <option  value="1">1</option>
+                 <option  value="2">2</option>
+                 <option  value="3">3</option>
+                 <option  value="4">4</option>
+                 <option  value="5">5</option>
+                 
+               </select>
+     
+     
+           </div>
+
+           <div class="form-group">
+             
+            <label for="delivery_time_score">delivery_time_score:</label>
+   
+             <select class="custom-select" formControlName="delivery_time_score"  id="delivery_time_score">
+               <option  value="1">1</option>
+               <option  value="2">2</option>
+               <option  value="3">3</option>
+               <option  value="4">4</option>
+               <option  value="5">5</option>
+               
+             </select>
+   
+   
+         </div>
+         <div class="form-group">
+             
+          <label for="value_for_money_score">value_for_money_score:</label>
+ 
+           <select class="custom-select" formControlName="value_for_money_score"  id="value_for_money_score">
+             <option  value="1">1</option>
+             <option  value="2">2</option>
+             <option  value="3">3</option>
+             <option  value="4">4</option>
+             <option  value="5">5</option>
+             
+           </select>
+ 
+ 
+       </div>
+       <div class="form-group">
+             
+        <label for="order_packaging_score">quality_of_food_score:</label>
+
+         <select class="custom-select" formControlName="quality_of_food_score"  id="quality_of_food_score">
+           <option  value="1">1</option>
+           <option  value="2">2</option>
+           <option  value="3">3</option>
+           <option  value="4">4</option>
+           <option  value="5">5</option>
+           
+         </select>
+
+
+     </div>
+     <div class="form-group">
+             
+      <label for="driver_performance_score">driver_performance_score:</label>
+
+       <select class="custom-select" formControlName="driver_performance_score" id="driver_performance_score">
+         <option  value="1">1</option>
+         <option  value="2">2</option>
+         <option  value="3">3</option>
+         <option  value="4">4</option>
+         <option  value="5">5</option>
+         
+       </select>
+
+
+   </div>
+   <div class="form-group">
+             
+    <label for="overall_score">overall_score:</label>
+
+     <select class="custom-select" formControlName="overall_score"  id="overall_score">
+       <option  value="1">1</option>
+       <option  value="2">2</option>
+       <option  value="3">3</option>
+       <option  value="4">4</option>
+       <option  value="5">5</option>
+       
+     </select>
+
+
+ </div>
+ <div class="form-group">
+  <label>review</label>
+  <input type="text" class="form-control" formControlName="review">
+</div>
+            
+           
+            <button type="submit" class="btn btn-block btn-primary">Rate</button>
+        </form>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
           

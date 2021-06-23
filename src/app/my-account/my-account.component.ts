@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models';
 import { AuthService } from '../services/auth.service';
 
@@ -18,6 +18,7 @@ form!: FormGroup;
   constructor( private authService: AuthService,
     private formbuilder: FormBuilder,
      private _route: ActivatedRoute,
+     private router:Router,
     ) { }
 
   ngOnInit(): void {
@@ -63,8 +64,24 @@ submit(){
 .then(async data => {
   
    console.log('Success:', data);
+   
+   this.form = this.formbuilder.group({
+
+      
+
+
+    first_name:[data.data.first_name],
+     last_name:[data.data.last_name],
+     email: [data.data.email],
+     gender: [data.data.gender],
+     date_of_birth: [data.data.date_of_birth],
+     mobile_number: [data.data.mobile_number],
+       
+      
+        });
+        this.router.navigate(['']);
   // this.message=data.message;
-  // console.log(this.message)
+   console.log(data.data.first_name)
 })
 
 
@@ -73,6 +90,11 @@ submit(){
 .catch((error) => {
   console.error('Error:', error);
 });
+
+
+
+
+
 
 }
   

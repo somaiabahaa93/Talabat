@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 // import { NotFoundComponent } from './components/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { DashboardComponent } from './dashboard/dashboard.component';
-
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';   
 // import { AuthService } from './guard/auth.service';
 // import { AuthGuard } from './guard/auth.guard';
 // import { TokenService } from './guard/token.service';
@@ -44,7 +44,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
 import { ResturantItemComponent } from './resturant-item/resturant-item.component';
 // import { MapComponent } from './map/map.component';
-
+// import { CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { VendorRegisterComponent } from './vendor-register/vendor-register.component';
 import { LoginComponent } from './login/login.component';
@@ -153,7 +153,7 @@ import { AuthGuard } from './_helpers';
     NgbPaginationModule,
     NgbAlertModule,
     ResturantDetailsModule,
-   
+    
     // NgxPrintModule,
    
     // AutosizeModule,
