@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Cuisine } from '../models/cuisine';
 import { Resturant } from '../models/resturant';
 import { ResturantsService } from '../services/resturants.service';
 
@@ -17,9 +19,17 @@ export class LetsGoComponent implements OnInit {
 
    resturants: Resturant[] = [];
    resturant!:Resturant;
-   search!:any;
+   cuisines:Cuisine[] = [];
 
-  constructor(private resturantService: ResturantsService, private router:Router,private formbuilder:FormBuilder,) { }
+   search!:any;
+   private _routeParamsSub!: Subscription;
+  constructor(private resturantService: ResturantsService,
+     private router:Router,
+     private formbuilder:FormBuilder,
+     private _fb: FormBuilder,
+     private _route: ActivatedRoute,
+     private _resturantsService: ResturantsService,
+     private _router: Router) { }
 
   ngOnInit(): void {
     // this.resturantService.getResturants().subscribe((res: any) => {
@@ -31,7 +41,7 @@ export class LetsGoComponent implements OnInit {
 
 
 
-    fetch(`http://127.0.0.1:8000/api/restaurants/nearby/${lat}/${lon}`, {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/nearby/${lat}/${lon}`, {
       method: 'GET', 
       // credentials: 'include',
       headers: {
@@ -63,14 +73,51 @@ export class LetsGoComponent implements OnInit {
     console.error('Error:', error);
   });
 
+  
+
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/cuisines`, {
+      method: 'GET', 
+      // credentials: 'include',
+      headers: {
+        // 'Authorization': `Bearer ${this.user.token}`,
+      'Content-Type': 'application/json',
+      "Accept":"application/json",
+      
+
+    }
+  })
+  .then(response => response.json())
+  .then(async data => {
     
+    // console.log('Success:', data);
+    this.cuisines = data;
+    //  console.log(this.cuisines)
+  
+      
+    
+   })
+  // .then(async data=>{
+  //   this.router.navigate(['crudResturant']);
+  //   this.resturantService.getResturants().subscribe((res: any) => {
+  //     this.resturants = res.data;
+  //     // console.log(res.error)
+  // });
+  // })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+    
+  
+
+
 
     // });
   }
 
   Name()
   {
-    fetch(`http://127.0.0.1:8000/api/sortbyname`, {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/sortbyname`, {
       method: 'GET', 
       // credentials: 'include',
       headers: {
@@ -107,7 +154,7 @@ export class LetsGoComponent implements OnInit {
 
   MinOrderAmount()
   {
-    fetch(`http://127.0.0.1:8000/api/sortbyminorder`, {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/sortbyminorder`, {
       method: 'GET', 
       // credentials: 'include',
       headers: {
@@ -144,7 +191,7 @@ export class LetsGoComponent implements OnInit {
 
   Newest()
   {
-    fetch(`http://127.0.0.1:8000/api/sortbydate`, {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/sortbydate`, {
       method: 'GET', 
       // credentials: 'include',
       headers: {
@@ -179,42 +226,116 @@ export class LetsGoComponent implements OnInit {
     
   }  
 
-  // Rate()
-  // {
-  //   fetch(`http://127.0.0.1:8000/api/sortbyrating`, {
-  //     method: 'GET', 
-  //     // credentials: 'include',
-  //     headers: {
-  //       // 'Authorization': `Bearer ${this.user.token}`,
-  //     'Content-Type': 'application/json',
-  //     "Accept":"application/json",
+  Rate()
+  {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/sortbyrating`, {
+      method: 'GET', 
+      // credentials: 'include',
+      headers: {
+        // 'Authorization': `Bearer ${this.user.token}`,
+      'Content-Type': 'application/json',
+      "Accept":"application/json",
       
 
-  //   }
-  // })
-  // .then(response => response.json())
-  // .then(async data => {
+    }
+  })
+  .then(response => response.json())
+  .then(async data => {
     
-  //   console.log('Success:', data);
-  //   this.resturant = data;
-  //   // console.log(this.resturants)
+    console.log('Success:', data);
+    this.resturants = data;
+    // console.log(this.resturants)
   
       
     
-  //  })
-  // // .then(async data=>{
-  // //   this.router.navigate(['crudResturant']);
-  // //   this.resturantService.getResturants().subscribe((res: any) => {
-  // //     this.resturants = res.data;
-  // //     // console.log(res.error)
-  // // });
-  // // })
-  // .catch((error) => {
-  //   console.error('Error:', error);
+   })
+  // .then(async data=>{
+  //   this.router.navigate(['crudResturant']);
+  //   this.resturantService.getResturants().subscribe((res: any) => {
+  //     this.resturants = res.data;
+  //     // console.log(res.error)
   // });
+  // })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 
     
-  // }
+  }
+
+
+  getAllCusines()
+  {
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/cuisines`, {
+      method: 'GET', 
+      // credentials: 'include',
+      headers: {
+        // 'Authorization': `Bearer ${this.user.token}`,
+      'Content-Type': 'application/json',
+      "Accept":"application/json",
+      
+
+    }
+  })
+  .then(response => response.json())
+  .then(async data => {
+    
+    console.log('Success:', data);
+    this.resturants = data;
+    // console.log(this.resturants)
+  
+      
+    
+   })
+  // .then(async data=>{
+  //   this.router.navigate(['crudResturant']);
+  //   this.resturantService.getResturants().subscribe((res: any) => {
+  //     this.resturants = res.data;
+  //     // console.log(res.error)
+  // });
+  // })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+    
+  }
+
+  chooseCuisine(u:any){
+    // console.log(u.id)
+    fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/filter/${u.id}`, {
+      method: 'GET', 
+      // credentials: 'include',
+      headers: {
+        // 'Authorization': `Bearer ${this.user.token}`,
+      'Content-Type': 'application/json',
+      "Accept":"application/json",
+      
+
+    }
+  })
+  .then(response => response.json())
+  .then(async data => {
+    
+    console.log('Success:', data);
+    this.resturants = data;
+    // console.log(this.resturants)
+  
+      
+    
+   })
+  // .then(async data=>{
+  //   this.router.navigate(['crudResturant']);
+  //   this.resturantService.getResturants().subscribe((res: any) => {
+  //     this.resturants = res.data;
+  //     // console.log(res.error)
+  // });
+  // })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+
+  }
 
 submit()
 {
@@ -227,7 +348,7 @@ submit()
 
 this.search=document.getElementById("in");
 const value=this.search.value;
-fetch(`http://127.0.0.1:8000/api/restaurants/search/${value}`, {
+fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/search/${value}`, {
       method: 'GET', 
       // credentials: 'include',
       headers: {
@@ -261,5 +382,18 @@ fetch(`http://127.0.0.1:8000/api/restaurants/search/${value}`, {
 
 
 
+  }
+
+
+  getRestaurant(id:any){
+    this._routeParamsSub = this._route.paramMap.subscribe(paramMap => {
+      if (paramMap.has('id')) {
+        this._resturantsService.getResturantById(paramMap.get('id')).subscribe((res: any) => {
+          this.resturant = res.data;
+          console.log(this.resturant);
+        });
+      }
+    });
+    this.router.navigate([`allresturants/${id}`]);
   }
 }

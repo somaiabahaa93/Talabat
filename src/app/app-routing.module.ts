@@ -68,6 +68,10 @@ const routes: Routes = [
   path: "letsGo",
   component: LetsGoComponent
 },
+// {
+//   path: 'letsGo/:id',
+//   loadChildren: () => import('./resturant-details/resturant-details.module').then(m => m.ResturantDetailsModule)
+//   },
 {
   path: "crudResturant",
   component: CrudResturantComponent, canActivate: [AuthGuard]
@@ -89,6 +93,7 @@ const routes: Routes = [
 path: 'allresturants/:id',
 loadChildren: () => import('./resturant-details/resturant-details.module').then(m => m.ResturantDetailsModule)
 },
+
   
 // { path: '**', redirectTo: '' },
   

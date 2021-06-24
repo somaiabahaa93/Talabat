@@ -17,7 +17,7 @@
             <!--<a class="nav-item nav-link nav-item-mine" routerLink="">Hello {{userFromApi.firstName}} {{userFromApi.lastName}}</a>-->
     
              <!--<span *ngIf="userFromApi">hello {{userFromApi.firstName}} {{userFromApi.lastName}}</span>-->
-             <a class="nav-item nav-link nav-item-mine" *ngIf="!currentUser" routerLink="/login">login</a>
+             <a class="nav-item nav-link nav-item-mine mr-5" *ngIf="!currentUser" routerLink="/login">login</a>
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" >login</a> -->
              
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a> -->
@@ -27,7 +27,7 @@
            <!-- <button class="btn btn-outline-primary" (click)="signOut()" *ngIf="isSignedIn">Log out</button> -->
            <!-- <a class="nav-item nav-link nav-item-mine" *ngIf="user"  routerLink="/login" (click)="logout()" >logout</a> -->
                  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  routerLinkActive="router-link-active"  id="navbarDropdown" *ngIf="currentUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle mr-5"  routerLinkActive="router-link-active"  id="navbarDropdown" *ngIf="currentUser" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           My Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">

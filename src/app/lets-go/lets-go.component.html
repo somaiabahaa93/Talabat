@@ -29,12 +29,17 @@
                 </div>  -->
                 <div class="p-3 text-muted  ml-2 mt-3  ml-2" style="border:1px solid #dbd8d8;">
                     <h6 style="color: black;" >Filter By Cuisines</h6>
+                    <p *ngFor="let u of cuisines" (click)="chooseCuisine(u)"><input type="radio" name="choose"> {{u.name}}</p>
+                    <!-- <p><input type="radio"> All</p>
                     <p><input type="radio"> All</p>
                     <p><input type="radio"> All</p>
                     <p><input type="radio"> All</p>
-                    <p><input type="radio"> All</p>
-                    <p><input type="radio"> All</p>
-                    <p><input type="radio"> All</p>
+                    <p><input type="radio"> All</p> -->
+
+                    <!-- <div *ngFor="let u of cuisines">
+                      {{u.name}}
+
+                    </div> -->
                     
                     
                 
@@ -46,7 +51,7 @@
                     <tbody class="text-muted">
                       <tr>
                         <th style="color: black;" >Sort by:</th>
-                        <!-- <td (click)="Rate()" >Ratings</td> -->
+                        <td (click)="Rate()" >Ratings</td>
                         <td (click)="Newest()" >Newest</td>
                        <td (click)="Name()" >A-Z</td>
                         <td (click)="MinOrderAmount()" >Min Order Amount</td>
@@ -54,7 +59,7 @@
                     </tbody>
                   </table>
                  
-                  <div class=" p-2 mx-3" style="border: .7px solid rgb(223, 212, 212);"   *ngFor="let resturant of resturants"[routerLink]="[resturant?.id]">
+                  <div class=" p-2 mx-3" style="border: .7px solid rgb(223, 212, 212);"   *ngFor="let resturant of resturants" (click)="getRestaurant(resturant.id)">
                     <div class="d-flex "  >
                       <img [src]="resturant.logo" class="card-img-top"  style="width: 70px;height: 70px;" class="mr-2">
                       <!-- <p>{{resturant.logo}}</p> -->

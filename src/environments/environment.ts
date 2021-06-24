@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   // baseUrl: `https://afternoon-falls-30227.herokuapp.com/api/v1/products`,
-  apiUrl: 'http://localhost:8000',
-  baseUrl: `http://127.0.0.1:8000/api/restaurants`
+  apiUrl: 'https://blooming-atoll-60288.herokuapp.com',
+  baseUrl: `https://blooming-atoll-60288.herokuapp.com/api/restaurants`
   // apiUrl: 'http://localhost:4000'
   
 };

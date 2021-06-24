@@ -46,7 +46,7 @@ submit(){
 
   const id= this.user.user.id
 
-  fetch(`http://127.0.0.1:8000/api/users/${id}`, {
+  fetch(`https://blooming-atoll-60288.herokuapp.com/api/users/${id}`, {
     method: 'PUT', 
     // credentials: 'include',
     headers: {

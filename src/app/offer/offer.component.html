@@ -1,1 +1,46 @@
-<p>offer works!</p>
+<!-- <div class="container" >
+    <div class="row ">
+    
+    <app-resturant-item *ngFor="let resturant of resturants"[routerLink]="[resturant.id]"></app-resturant-item>
+    
+    </div>
+
+  
+</div> -->
+<app-navbar></app-navbar>
+<div class="container" >
+  <div style="background-color: white;box-shadow:5px 10px 18px#888888;overflow: hidden;" >
+    <!-- <div></div> -->
+    <div class="row ">
+      <h2 style="background-color: #eee7e7;" class=" pl-5 py-3 mb-3 ">Offers</h2>
+
+    <div class=" col-md-3 m-auto"  *ngFor="let resturant of resturants" (click)="getRestaurant(resturant.id)">
+    <!-- <div >
+     <img class="img-fluid" [src]="resturant.logo">
+     
+      <h3>{{resturant.name}}</h3>
+      
+      <p>{{resturant.description}}</p>
+    </div> -->
+
+    <div class="card my-3" >
+      <img [src]="resturant.logo" class="m-auto"  style="width:200px;height: 200px;"  >
+      <hr>
+      <!-- <p>{{resturant.logo}}</p> -->
+      <div class="card-body text-center">
+        <h5 class="card-title">{{resturant?.name}}</h5>
+        <p class="text-muted">{{resturant?.description}}</p>
+        <!-- <p class="card-text">{{resturant.first_name_vendor}}</p> -->
+      </div>
+      
+    </div>
+    
+    </div>
+    
+
+
+
+    </div>
+</div>
+  
+</div>

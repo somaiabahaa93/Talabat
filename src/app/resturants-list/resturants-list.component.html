@@ -9,12 +9,12 @@
 </div> -->
 <app-navbar></app-navbar>
 <div class="container" >
-  <div style=" height:1000px;background-color: white;box-shadow:5px 10px 18px#888888;overflow: hidden;" >
+  <div style=" background-color: white;box-shadow:5px 10px 18px#888888;overflow: hidden;" >
     <!-- <div></div> -->
     <div class="row ">
       <h2 style="background-color: #eee7e7;" class=" pl-5 py-3 mb-3 ">All Restaurants</h2>
 
-    <div class=" col-md-3 m-auto"  *ngFor="let resturant of resturants"[routerLink]="[resturant.id]">
+    <div class=" col-md-3 m-auto"  *ngFor="let resturant of resturants"[routerLink]="[resturant?.id]">
     <!-- <div >
      <img class="img-fluid" [src]="resturant.logo">
      
@@ -23,8 +23,8 @@
       <p>{{resturant.description}}</p>
     </div> -->
 
-    <div class="card my-3" >
-      <img [src]="resturant.logo" class="card-img-top" >
+    <div class="card my-3 text-center m-auto" >
+      <img [src]="resturant.logo"  style="width: 200px;height: 200px;" class="m-auto" >
       <hr>
       <!-- <p>{{resturant.logo}}</p> -->
       <div class="card-body text-center">

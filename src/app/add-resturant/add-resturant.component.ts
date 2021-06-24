@@ -52,7 +52,7 @@ export class AddResturantComponent implements OnInit {
   // });
 
   
-                fetch(`http://127.0.0.1:8000/api/restaurants`, {
+                fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants`, {
                 method: 'POST', 
                 // credentials: 'include',
                 headers: {

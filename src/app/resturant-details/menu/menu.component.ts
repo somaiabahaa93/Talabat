@@ -243,7 +243,7 @@ url:any;
     console.log(item)
     console.log(this.user.token)
     // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                  fetch(`http://127.0.0.1:8000/api/restaurants/${item.restaurant_id}/menuitems/${item.id}/cartitems`, {
+                  fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${item.restaurant_id}/menuitems/${item.id}/cartitems`, {
                   method: 'POST', 
                   // credentials: 'include',
                   headers: {
@@ -264,6 +264,10 @@ url:any;
                 console.log('Success:', data);
                 this.message=data.message;
                 console.log(this.message);
+                if(this.message ==='Unauthenticated.')
+                {
+                  this.message ='You are not logged in yet'
+                }
                 
 
                 this.cart=data.cart;
@@ -332,7 +336,7 @@ url:any;
   console.log(i)
   console.log(this.user.token)
   // var bearer = 'Bearer ' +  localStorage.getItem('user');
-                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {
+                fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/cartitems`, {
                 method: 'POST', 
                 // credentials: 'include',
                 headers: {
@@ -413,7 +417,7 @@ url:any;
   console.log(this.user.token)
   // var bearer = 'Bearer ' +  localStorage.getItem('user');
                       // http://127.0.0.1:8000/api/restaurants/4/menuitems/6/carts/2/cartitems/2
-                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${i.restaurant_id}/menuitems/${i.menu_item_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
                 method: 'POST', 
                 // credentials: 'include',
                 headers: {
@@ -495,7 +499,7 @@ url:any;
   console.log(this.user.token)
   // var bearer = 'Bearer ' +  localStorage.getItem('user');
                       // http://127.0.0.1:8000/api/restaurants/4/carts/2/cartitems/2
-                fetch(`http://127.0.0.1:8000/api/restaurants/${i.restaurant_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
+                fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${i.restaurant_id}/carts/${i.cart_id}/cartitems/${i.id}`, {
                 method: 'DELETE', 
                 // credentials: 'include',
                 headers: {
@@ -627,7 +631,7 @@ url:any;
 
       console.log(this.formRate.value)
 
-          fetch(`http://127.0.0.1:8000/api/restaurants/${this.resturant.id}/ratings`, {
+          fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${this.resturant.id}/ratings`, {
             method: 'POST', 
             // credentials: 'include',
             headers: {

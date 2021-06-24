@@ -38,7 +38,7 @@ export class CrudResturantComponent implements OnInit {
 
 delete(id:any){
   // console.log(id);
-  fetch(`http://127.0.0.1:8000/api/restaurants/${id}`, {
+  fetch(`https://blooming-atoll-60288.herokuapp.com/api/restaurants/${id}`, {
                 method: 'DELETE', 
                 // credentials: 'include',
                 headers: {
@@ -54,6 +54,10 @@ delete(id:any){
               
               // console.log('Success:', data.message);
               this.message=data.message;
+              if(this.message ==='Unauthenticated.')
+              {
+                this.message ='You are not logged in yet'
+              }
               console.log(this.message)
             })
                 
