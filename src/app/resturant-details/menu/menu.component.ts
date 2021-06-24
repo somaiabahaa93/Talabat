@@ -46,9 +46,10 @@ export class MenuComponent implements OnInit {
   // cartItem!:{};
   items:any;
   message:any;
-   
-
+   cI:CartItem[]=[];
+url:any;
   rating!:Rating;
+  cartup!:Cart;
   // public resdata:[]=[];
   // public i:number=0;
   
@@ -167,11 +168,35 @@ export class MenuComponent implements OnInit {
         });
 
 
+  this.cart=JSON.parse(localStorage.getItem("cart")||'{}');
+  console.log(this.cart)
+  this.url=localStorage.getItem("items")
+   fetch(this.url, {
+                method: 'GET', 
+                // credentials: 'include',
+                headers: {
+                  'Authorization': `Bearer ${this.user.token}`,
+                'Content-Type': 'application/json',
+                "Accept":"application/json",
+                
+  
+              }
+            })
+            .then(response => response.json())
+              
+              .then(async data=>{
+                
+                  this.items=data.data;
+                  console.log(this.items)
+                  
+                  
+              })
+           
+            .catch((error) => {
+               console.error('Error here is:', error);
+            });
 
-
-
-
-
+            
 
   }
 
@@ -246,8 +271,11 @@ export class MenuComponent implements OnInit {
                 // data.cart-item
                 // console.log(this.cart)
                 //  console.log(this.cartItem)
+                localStorage.setItem("cart",JSON.stringify(this.cart))
                   this.items=data.cart.href.cartitems;
                   console.log(this.items)
+
+                  localStorage.setItem("items",this.items)
 
                   let res = await fetch(this.items, {
                     method: 'GET',
@@ -260,6 +288,7 @@ export class MenuComponent implements OnInit {
                   let resobj=await res.json();
                   this.items=resobj.data;
                   console.log(this.items)
+
                   // for(let i=0;i<=this.items.lenght;i++)
                   // {
                   //   console.log(this.items[i].menu_item_name);
@@ -325,12 +354,13 @@ export class MenuComponent implements OnInit {
 
               this.cart=data.cart;
               this.cartItem=data.cartitem;
+               localStorage.setItem("cart",JSON.stringify(this.cart))
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
                 this.items=data.cart.href.cartitems;
                 console.log(this.items)
-
+                localStorage.setItem("items",this.items)
                 let res = await fetch(this.items, {
                   method: 'GET',
                   headers: {
@@ -406,9 +436,10 @@ export class MenuComponent implements OnInit {
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
+               localStorage.setItem("cart",JSON.stringify(this.cart))
                 this.items=data.cart.href.cartitems;
                 // console.log(this.items)
-
+                localStorage.setItem("items",this.items)
                 let res = await fetch(this.items, {
                   method: 'GET',
                   headers: {
@@ -487,9 +518,11 @@ export class MenuComponent implements OnInit {
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
+               localStorage.setItem("cart",JSON.stringify(this.cart))
                 this.items=data.cart.href.cartitems;
                 // console.log(this.items)
-
+                localStorage.setItem("items",this.items)
+                
                 let res = await fetch(this.items, {
                   method: 'GET',
                   headers: {
@@ -504,7 +537,7 @@ export class MenuComponent implements OnInit {
                 // for(let i=0;i<=this.items.lenght;i++)
                 // {
                 //   console.log(this.items[i].menu_item_name);
-
+              
                   
                 // }
                 
@@ -528,8 +561,23 @@ export class MenuComponent implements OnInit {
             .catch((error) => {
               console.error('Error:', error);
             });
+            if(this.items.length===1)
+            {
+             localStorage.removeItem("items");
+             localStorage.removeItem("cart");
+             this.items=[];
+             this.cart=JSON.parse(localStorage.getItem("cart")||'{}')
+            //  this.cart.delivery_fees=0
+            //  this.cart.id=0
+            //  this.cart.sub_total=0
+            //  this.cart.total_price=0
+            //  this.cart.href=''
 
-            // console.log(this.i);
+             
+             
+             
+            }
+             console.log(this.cart);
             // this.i=0;
             // while(this.i<this.length){}
             // console.log(this.resdata);

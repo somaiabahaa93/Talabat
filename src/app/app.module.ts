@@ -65,6 +65,7 @@ import { CrudResturantComponent } from './crud-resturant/crud-resturant.componen
 import { AddResturantComponent } from './add-resturant/add-resturant.component';
 import { EditResturantComponent } from './edit-resturant/edit-resturant.component';
 import { AuthGuard } from './_helpers';
+import { OfferComponent } from './offer/offer.component';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -104,6 +105,7 @@ import { AuthGuard } from './_helpers';
     CrudResturantComponent,
     AddResturantComponent,
     EditResturantComponent,
+    OfferComponent,
     // SigninComponent,
     // SignupComponent,
     // UserProfileComponent,

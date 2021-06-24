@@ -70,7 +70,7 @@
                     </div>
     <div style="width:20%;position: fixed;left:70%;top:44%; border:.5px solid rgb(219, 214, 214) ;">
         <h5 class="card-title px-3 pt-3 ml-0 pb-3 mb-0" style="background-color: orangered; color: white;">Your Cart</h5>
-        <div *ngIf="!cart" class="text-center" style="background-color:  rgb(246, 246, 246);" >
+        <div *ngIf="!items" class="text-center" style="background-color:  rgb(246, 246, 246);" >
             <img  src="assets/img/empty-cart.svg" class="m-3" style="width: 100px;height: 100px;">
             <h6  class="pb-4">There are no items in your cart</h6>
         </div>
@@ -95,7 +95,7 @@
 
 
       <div *ngFor="let i of items"> 
-       <div  *ngIf="cart" style="background-color:rgb(223, 235, 212);" class="d-flex justify-content-around align-items-center">
+       <div  *ngIf="items" style="background-color:rgb(223, 235, 212);" class="d-flex justify-content-around align-items-center">
           <div style="background-color: white; border-radius: 2px; border: 1px solid rgb(193, 206, 180); height:20px;" class="d-flex  px-2 align-items-center ">
           <svg (click)="minus(i)" style="border-right: rgb(193, 206, 180) 1px solid;color:orangered" class="p-1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
@@ -113,7 +113,7 @@
       </div>
 
 
-      <div *ngIf="cart"  class="px-2 text-center pb-5" style="font-size: 15px; background-color: white;" >
+      <div *ngIf="items" class="px-2 text-center pb-5" style="font-size: 15px; background-color: white;" >
         <div class="d-flex justify-content-between">
         <p class="text-muted">Sub Total:</p><p class="text-muted">EGP{{cart?.sub_total}}.00</p></div>
         <div class="d-flex justify-content-between">

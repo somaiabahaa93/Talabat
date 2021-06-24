@@ -6,5 +6,6 @@ export interface MenuItem {
     description:string,
     logo:string,
     price:number,
+  
     
 }

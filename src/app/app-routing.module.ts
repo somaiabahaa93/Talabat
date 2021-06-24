@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LetsGoComponent } from './lets-go/lets-go.component';
 import { LoginComponent } from './login/login.component';
 import { MyAccountComponent } from './my-account/my-account.component';
+import { OfferComponent } from './offer/offer.component';
 import { RegisterComponent } from './register/register.component';
 import { ResturantDetailsComponent } from './resturant-details/resturant-details.component';
 import { ResturantsListComponent } from './resturants-list/resturants-list.component';
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'allresturants',
     component: ResturantsListComponent
+  },
+  {
+    path: 'offer',
+    component: OfferComponent
   },
   {
   path: 'register',
