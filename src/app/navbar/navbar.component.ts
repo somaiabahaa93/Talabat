@@ -1,8 +1,10 @@
 // import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Emitters } from '../emitters/emitters';
+import { Cart } from '../models/cart';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
 // import { AuthStateService } from '../shared/auth-state.service';
@@ -15,7 +17,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent  {
-  
+  cart!:Cart;
   // isSignedIn: boolean = false;
   // authenticated=false;
   // token!: string;
@@ -66,7 +68,10 @@ export class NavbarComponent  {
         // this.user=localStorage.getItem('user');
         
          this.currentUser=localStorage.getItem('user');
+         this.cart=JSON.parse(localStorage.getItem("cart")||'{}');
+
     }
+    
    
     logout() {
 
