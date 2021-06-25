@@ -17,7 +17,7 @@
             <!--<a class="nav-item nav-link nav-item-mine" routerLink="">Hello {{userFromApi.firstName}} {{userFromApi.lastName}}</a>-->
     
              <!--<span *ngIf="userFromApi">hello {{userFromApi.firstName}} {{userFromApi.lastName}}</span>-->
-             <a class="nav-item nav-link nav-item-mine mr-5" *ngIf="!currentUser" routerLink="/login">login</a>
+             <a class="nav-item nav-link nav-item-mine mr-5" id="login" *ngIf="!currentUser" routerLink="/login">login</a>
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/login" >login</a> -->
              
              <!-- <a class="nav-item nav-link nav-item-mine" routerLink="/profile" *ngIf="isSignedIn">User Profile</a> -->

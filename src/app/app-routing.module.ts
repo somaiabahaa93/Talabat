@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddResturantComponent } from './add-resturant/add-resturant.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 import { CrudResturantComponent } from './crud-resturant/crud-resturant.component';
 import { EditResturantComponent } from './edit-resturant/edit-resturant.component';
 // import { SigninComponent } from './components/signin/signin.component';
@@ -79,6 +80,10 @@ const routes: Routes = [
 {
   path: "addResturant",
   component: AddResturantComponent
+},
+{
+  path: "checkOut",
+  component: CheckOutComponent
 },
 {
   path: "editResturant/:id",

@@ -1,0 +1,87 @@
+ <div style="background-color: whitesmoke;">
+ 
+ <div class="container" >
+ 
+ <form class="needs-validation">
+    <!-- <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control" id="inputEmail4">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Password</label>
+        <input type="password" class="form-control" id="inputPassword4">
+      </div>
+    </div> -->
+    <div class="form-group w-75 pt-5">
+      <label for="validationCustom03" >Delivery Address</label>
+      <input required type="text" class="form-control" id="validationCustom03" placeholder="1234 Main St">
+    </div>
+    <div class="form-group w-75">
+      <label for="inputAddress2">Delivery Address 2</label>
+      <input required type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <!-- <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control" id="inputCity">
+      </div>
+      <div class="form-group col-md-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+      <div class="form-group col-md-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control" id="inputZip">
+      </div>
+    </div> -->
+    <!-- <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Check me out
+        </label>
+      </div>
+    </div> -->
+    <hr class="w-75">
+    <input type="checkbox" class="mr-2 mt-2">Shipping address is the same as my billing address<br>
+    <input type="checkbox" class="mr-2 mb-2">Save this information for next time
+    <hr class="w-75">
+    <h4>Payment</h4>
+    <input type="radio" name="check" class="mr-2">Credit card<br>
+    <input type="radio" name="check" class="mr-2">Debit card
+    <br>
+    <input type="radio" name="check" class="mr-2">PayPal
+    <hr class="w-75">
+<div class="row">
+      <div class="form-group col-md-3">
+        <label>Name on card</label>
+        <input type="text" class="form-control" required >
+      </div>
+      <div class="form-group col-md-3">
+        <label >Credit card number</label>
+        <input type="text" class="form-control" required >
+      </div>
+
+
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label>Expiration</label>
+          <input type="text" class="form-control"required >
+        </div>
+        <div class="form-group col-md-2">
+          <label >CVV</label>
+          <input type="text" class="form-control" required >
+        </div>
+      </div>
+    </div>
+    <hr class="w-75">
+    <button class="btn btn-primary w-75 mb-5" type="submit" (click)="check()" >Continu to Checkout</button>
+
+    <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
+  </form>
+</div>
+</div>

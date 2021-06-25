@@ -67,6 +67,7 @@ import { EditResturantComponent } from './edit-resturant/edit-resturant.componen
 import { AuthGuard } from './_helpers';
 import { OfferComponent } from './offer/offer.component';
 import { FooterComponent } from './footer/footer.component';
+import { CheckOutComponent } from './check-out/check-out.component';
 // import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -108,6 +109,7 @@ import { FooterComponent } from './footer/footer.component';
     EditResturantComponent,
     OfferComponent,
     FooterComponent,
+    CheckOutComponent,
     // SigninComponent,
     // SignupComponent,
     // UserProfileComponent,
