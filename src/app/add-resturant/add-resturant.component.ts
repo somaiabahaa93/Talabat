@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AlertService, AuthService } from '../services';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Cuisine } from '../models/cuisine';
 
 @Component({
   selector: 'app-add-resturant',
@@ -14,6 +15,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class AddResturantComponent implements OnInit {
   resturant!:Resturant;
   resturants:Resturant[]=[];
+  cuisines:Cuisine[] = [];
 
   form!: FormGroup;
   user = this.authService.userValue;
@@ -26,11 +28,7 @@ export class AddResturantComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formbuilder.group({
-
-      
-
-
-      name:[''],
+    name:[''],
     description:[''],
     logo:[''],
     location:[''],
@@ -40,9 +38,40 @@ export class AddResturantComponent implements OnInit {
     minimum_order:[''],
     delivery_fees:[''],
     cusine_id:[''],
-       
+     });
+
+
+     fetch(`https://blooming-atoll-60288.herokuapp.com/api/cuisines`, {
+      method: 'GET', 
+      // credentials: 'include',
+      headers: {
+        // 'Authorization': `Bearer ${this.user.token}`,
+      'Content-Type': 'application/json',
+      "Accept":"application/json",
       
-        });
+
+    }
+  })
+  .then(response => response.json())
+  .then(async data => {
+    
+    // console.log('Success:', data);
+    this.cuisines = data;
+    //  console.log(this.cuisines)
+  
+      
+    
+   })
+  // .then(async data=>{
+  //   this.router.navigate(['crudResturant']);
+  //   this.resturantService.getResturants().subscribe((res: any) => {
+  //     this.resturants = res.data;
+  //     // console.log(res.error)
+  // });
+  // })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
 
   }
   submit(){

@@ -58,14 +58,24 @@
     
     
           </div>
+          <!-- <div class="form-group">
+            <label>Cusine</label><br>
+            <p *ngFor="let u of cuisines" ><input type="radio" name="choose"> {{u.name}}</p> 
+            <input type="number" class="form-control" formControlName="cusine_id"> 
+          </div> -->
+        
+          
+            
           <div class="form-group">
-            <label>Cusine</label><br> 
-             <input type="number" class="form-control" formControlName="cusine_id"> 
+            <label>Cusine</label><br>
+    
+              <select class="form-control" formControlName="cusine" name="cusine" id="cusine">
+                <option *ngFor="let u of cuisines"  value="cusine" >{{u.name}}</option>
+
+              </select>
     
     
           </div>
-        
-        
         
         
         <button  type="submit" class="btn btn-block btn-primary">Add</button>
