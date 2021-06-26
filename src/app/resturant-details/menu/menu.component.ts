@@ -362,7 +362,9 @@ url:any;
 
               this.cart=data.cart;
               this.cartItem=data.cartitem;
+              if(this.user.token){
                localStorage.setItem("cart",JSON.stringify(this.cart))
+              }
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
@@ -444,8 +446,10 @@ url:any;
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
+              if(this.user.token){
                localStorage.setItem("cart",JSON.stringify(this.cart))
-                this.items=data.cart.href.cartitems;
+              }
+               this.items=data.cart.href.cartitems;
                 // console.log(this.items)
                 localStorage.setItem("items",this.items)
                 let res = await fetch(this.items, {
@@ -526,8 +530,10 @@ url:any;
               // data.cart-item
               // console.log(this.cart)
               //  console.log(this.cartItem)
+              if(this.user.token){
                localStorage.setItem("cart",JSON.stringify(this.cart))
-                this.items=data.cart.href.cartitems;
+              } 
+               this.items=data.cart.href.cartitems;
                 // console.log(this.items)
                 localStorage.setItem("items",this.items)
                 
