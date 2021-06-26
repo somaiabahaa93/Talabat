@@ -2,26 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Run these two commands 
+ $npm install
+ $ng serve --open
+ 
+ ![Screenshot (26)](https://user-images.githubusercontent.com/79705893/123523126-1177de80-d6c2-11eb-9a54-e8c75de42688.png)
+![Screenshot (31)](https://user-images.githubusercontent.com/79705893/123523132-1b014680-d6c2-11eb-886f-30a09c6230c9.png)
+![Screenshot (32)](https://user-images.githubusercontent.com/79705893/123523133-205e9100-d6c2-11eb-8f97-ae97418dff8a.png)
+![Screenshot (30)](https://user-images.githubusercontent.com/79705893/123523136-23f21800-d6c2-11eb-95c2-7118881c9cfb.png)
+![Screenshot (43)](https://user-images.githubusercontent.com/79705893/123523143-281e3580-d6c2-11eb-9f7e-bd592846268e.png)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
