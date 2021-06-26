@@ -1,6 +1,6 @@
  <div style="background-color: whitesmoke;">
  
- <div class="container" >
+ <div class="d-flex container" >
  
  <form class="needs-validation">
     <!-- <div class="form-row">
@@ -55,6 +55,9 @@
     <input type="radio" name="check" class="mr-2">Debit card
     <br>
     <input type="radio" name="check" class="mr-2">PayPal
+    <br>
+    <input type="radio" name="check" class="mr-2">Cash
+
     <hr class="w-75">
 <div class="row">
       <div class="form-group col-md-3">
@@ -64,8 +67,13 @@
       <div class="form-group col-md-3">
         <label >Credit card number</label>
         <input type="text" class="form-control" required >
+        
       </div>
-
+      <div class="col-md-4">
+        <img class="mx-2" src='assets/img/visa_blue.png' style=" width: 50px ;height: 40px;">
+        <img class="mx-2" src='assets/img/logo-mastercard.svg' style=" width: 50px;height: 50px;">
+        <img  class="mx-2" src='assets/img/logo-cash.svg' style=" width: 50px; height: 50px;">
+      </div>
 
       <div class="row">
         <div class="form-group col-md-2">
@@ -79,9 +87,20 @@
       </div>
     </div>
     <hr class="w-75">
-    <button class="btn btn-primary w-75 mb-5" type="submit" (click)="check()" >Continu to Checkout</button>
+    <button class="btn btn-success w-75 mb-5" type="submit" (click)="check()" >Continu to Checkout</button>
 
     <!-- <button type="submit" class="btn btn-primary">Sign in</button> -->
   </form>
+  <div *ngIf="items" class="p-4 text-center pt-5 w-50 mt-5" style="font-size: 15px; background-color: white; height: 250px; border-radius: 5px;" >
+    <h4>Your Cart</h4>
+    <div class="d-flex justify-content-between">
+    <p class="text-muted">Sub Total:</p><p class="text-muted">EGP{{cart?.sub_total}}.00</p></div>
+    <div class="d-flex justify-content-between">
+      <p>Service Charge:</p><p>EGP{{cart?.delivery_fees}}.00</p></div>
+      <div class="d-flex justify-content-between">
+        <p>Total Amount:</p><p> EGP{{cart?.total_price}}.00</p></div>
+        <!-- <button class="btn btn-success px-4 mb-5" [routerLink]="['/checkOut']" routerLinkActive="router-link-active" >PROCEED TO CHECKOUT</button> -->
+
+  </div>
 </div>
 </div>
