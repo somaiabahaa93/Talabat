@@ -17,7 +17,7 @@ declare const L: any;
       </button>
     </div>
     <div class="modal-body">
-    <div style="height: 90vh;width: 70vh;" id="map"> </div>
+    <div style="height: 90vh;width:480px;" id="map"> </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="nearBy()">Delivery Here</button>
     </div>

@@ -267,6 +267,8 @@ url:any;
                 if(this.message ==='Unauthenticated.')
                 {
                   this.message ='You are not logged in yet'
+                  // localStorage.removeItem("cart")
+
                 }
                 
 
@@ -275,7 +277,9 @@ url:any;
                 // data.cart-item
                 // console.log(this.cart)
                 //  console.log(this.cartItem)
+                if(this.user.token){
                 localStorage.setItem("cart",JSON.stringify(this.cart))
+              }
                   this.items=data.cart.href.cartitems;
                   console.log(this.items)
 
