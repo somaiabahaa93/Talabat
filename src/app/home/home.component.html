@@ -1,18 +1,18 @@
 <app-navbar></app-navbar>
 <div class="bg__container">
   <div class="bg__background">
-    <img src="assets/img/bg.png" alt="">
-    <img src="assets/img/bg2.png" alt="">
+    <img class="im" src="assets/img/bg.png" alt="">
+    <img class="im" src="assets/img/bg2.png" alt="">
 
   </div>
   <div class="text--container">
     <div class="main--header">
       <div class="main--text">
-        <h1>Order food online in Egypt</h1>
+        <h1 id="order">Order food online in Egypt</h1>
       </div>
       <div class="search--input">
         
-        <input type="text" value="" [(ngModel)]="search" placeholder="Search for area, street, landmark...">
+        <input id="search" type="text"  value="" [(ngModel)]="search" placeholder="Search for area, street, landmark...">
         <!-- <button  mat-flat-button class="btn" style="color: white;" [routerLink]="['letsGo']" routerLinkActive="router-link-active" >Let's Go</button> -->
         
         <!-- <p>You can pass an existing component as content of the modal window. In this case, if you're still using Angular 8 or older, remember to add the content component
@@ -23,7 +23,7 @@
       <!-- </div> -->
       <ng-template #enableTemplate>
         <!-- <div> -->
-         <button (click)="open()"  style="color: white;" class="btn " >Let's Go</button>
+         <button (click)="open()" class="ml-2" id="letsgo" style="color: white;" class="btn " >Let's Go</button>
         <!-- </div> -->
     </ng-template>
       </div>
